@@ -1,15 +1,29 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-
-import sitemap from '@astrojs/sitemap';
-
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig, sharpImageService } from "astro/config";
+import icon from "astro-icon";
+import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [sitemap()],
-
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+  },
+
+  integrations: [icon(), sitemap()],
+
+  prefetch: true,
+
+  site: "https://14bryanespinoza.github.io/porftolio-web/",
+  base: "/portfolio-web/",
+  build: { assets: "assets" },
+
+  image: {
+    service: sharpImageService({
+      avif: { effort: 4, chromaSubsampling: "4:2:0" },
+      webp: { effort: 5 },
+      jpeg: { mozjpeg:  true },
+      png: { compressionLevel: 9 },
+    }),
+  },
 });
