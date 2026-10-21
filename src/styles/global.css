@@ -4,35 +4,22 @@
   --font-default: "JetBrains Mono", monospace;
 
   --color-bg: #1a1b26;
-  --color-bg-surface: #1f2335;
-  --color-bg-surface-hover: #292e42;
+  --color-bg-surface: #24283b;
+  --color-bg-hover: #2f3348;
 
-  --color-text: #c0caf5;
-  --color-text-secondary: #a9b1d6;
-  --color-text-muted: #8b95ad;
+  --color-text-bright: #c0caf5;
+  --color-text: #a9b1d6;
+  --color-text-muted: #565f89;
 
-  --color-border: #3b4261;
+  --color-border: #2f3348;
 
-  --color-primary: #7aa2f7;
-  --color-accent: #ff9e64;
+  --color-brand: #6366f1;
+  --color-brand-hover: #818cf8;
 
   --color-success: #9ece6a;
+  --color-warning: #e0af68;
   --color-danger: #f7768e;
-
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.35);
-}
-
-@utility glass {
-  background: color-mix(in oklab, var(--color-bg-surface) 60%, transparent);
-  backdrop-filter: blur(14px) saturate(1.2);
-  border: 1px solid color-mix(in oklab, var(--color-border) 70%, transparent);
-}
-
-@utility glass-strong {
-  background: color-mix(in oklab, var(--color-bg) 78%, transparent);
-  backdrop-filter: blur(18px) saturate(1.2);
-  border-bottom: 1px solid
-    color-mix(in oklab, var(--color-border) 70%, transparent);
+  --color-info: #7aa2f7;
 }
 
 html {
@@ -45,7 +32,7 @@ body {
 
 :focus-visible {
   outline-offset: 2px;
-  outline: 2px solid var(--color-);
+  outline: 2px solid var(--color-brand);
 }
 
 @media (prefers-reduced-motion: reduce) {
