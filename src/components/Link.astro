@@ -1,0 +1,31 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  url: string;
+  label?: string;
+  targ?: boolean;
+  download?: boolean;
+  icon?: string;
+  skip?: boolean;
+  className?: string;
+}
+
+const baseStyle =
+  "flex gap-2 text-sm text-text transition hover:scale-105 hover:text-white";
+const skipStyle =
+  "sr-only bg-brand transition focus:not-sr-only focus:absolute focus:top-3 focus:left-6 focus:z-50 focus:px-6 focus:py-2 focus:rounded-md focus:font-bold focus:text-white hover:bg-brand-hover ";
+
+const { url, label, targ, download, icon, skip, className = "" } = Astro.props;
+---
+
+<a
+  href={url}
+  target={targ ? "_blank" : ""}
+  rel={targ ? "noopener noreferrer" : ""}
+  download={download}
+  class={`${skip ? skipStyle : baseStyle} ${className}`}
+>
+  {icon && <Icon name={icon} class="text-lg" />}
+  {label}
+</a>
