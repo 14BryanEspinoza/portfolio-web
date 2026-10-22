@@ -1,0 +1,80 @@
+---
+import { socialNetworks } from "@data/links";
+import ContainerText from "@components/ContainerText.astro";
+import Badged from "@components/Badged.astro";
+import Link from "@components/Link.astro";
+import Input from "@components/Input.astro";
+import Button from "@components/Button.astro";
+---
+
+<section id="contacto" class="bg-black-dark py-20 md:py-24">
+  <ContainerText
+    title="¿Tienes un Proyecto en Mente?"
+    subtitle="Contacto"
+    description="Estoy disponible para nuevos proyectos y oportunidades laborales.
+        ¡Hablemos!"
+    classNameDiv="text-center"
+  />
+
+  <div class="grid gap-12 md:mx-6 md:grid-cols-2 md:gap-6 lg:mx-auto lg:max-w-4xl">
+    <div class="mx-auto flex flex-col gap-2 md:w-full">
+      <h2 class="mb-2 text-center text-sm font-bold tracking-widest text-gray-light uppercase">
+        Información de Contacto
+      </h2>
+
+      <Badged
+        title="email"
+        description="14bryespinoza@gmail.com"
+        icon="simple-icons:gmail"
+      />
+
+      <Badged
+        title="ubicación"
+        description="Carazo, Nicaragua"
+        icon="simple-icons:googlemaps"
+      />
+    </div>
+
+    <div class="mx-auto flex flex-col gap-2 md:col-start-1 md:row-start-2">
+      <h2 class="mb-2 text-center text-sm font-bold tracking-widest text-gray-light uppercase">
+        Mis Redes
+      </h2>
+
+      <div class="flex items-center justify-center gap-8">
+        {socialNetworks.map((link) => (
+          <Link
+            url={link.url}
+            icon={link.icon}
+            targ
+            className="text-gray-blue hover:border-gray-light hover:text-gray-light"
+          />
+        ))}
+      </div>
+    </div>
+
+    <form
+      action="https://formsubmit.co/14bryespinoza@gmail.com"
+      method="POST"
+      class="mx-auto grid max-w-sm gap-8 rounded-2xl border border-gray-muted bg-black-deep p-8 md:col-start-2 md:row-span-2 md:row-start-1 md:w-full"
+    >
+      <Input name="name" label="Nombre" type="text" placeholder="John Doe" />
+
+      <Input
+        name="email"
+        label="Email"
+        type="email"
+        placeholder="example@gmail.com"
+      />
+
+      <Input
+        name="message"
+        label="Mensaje"
+        type="text"
+        placeholder="¿En qué puedo ayudarte?"
+        element="textarea"
+      />
+
+      <Button type="submit" label="Enviar Mensaje" icon="lucide:send" />
+    </form>
+  </div>
+</section>
