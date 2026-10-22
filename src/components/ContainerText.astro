@@ -1,23 +1,29 @@
 ---
 interface Props {
   title: string;
+  subtitle?: string;
   description?: string;
   heading?: boolean;
+  classNameDiv?: string;
 }
 
 const styleH1 =
   "leading-relaxed font-bold tracking-wide text-balance text-gray-light text-lg md:text-xl lg:text-2xl";
 const styleH2 =
-  "leading-relaxed font-bold tracking-wide text-balance text-gray-light md:text-lg lg:text-xl";
+  "text-sm font-bold font-mono uppercase tracking-widest text-indigo-soft";
 
-const { title, description, heading } = Astro.props;
+const { title, subtitle, description, heading, classNameDiv } = Astro.props;
 ---
 
-<div class="mb-8 flex max-w-sm flex-col gap-4 md:max-w-md lg:max-w-3xl">
+<div
+  class=` mx-auto  md:max-w-md lg:max-w-3xl flex flex-col gap-4 mb-12 ${classNameDiv}`
+>
+  {subtitle && <p class={styleH2}>{subtitle}</p>}
+
   {heading ? (
     <h1 class={styleH1}>{title}</h1>
   ) : (
-    <h2 class={styleH2}>{title}</h2>
+    <h2 class={styleH1}>{title}</h2>
   )}
 
   <p class="text-sm leading-relaxed text-balance text-gray-blue lg:text-base">
