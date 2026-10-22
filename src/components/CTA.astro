@@ -1,0 +1,26 @@
+---
+import { socialNetworks } from "@data/links";
+import Link from "@components/Link.astro";
+
+const styleBase = "items-center px-6 py-3 font-semibold rounded-md ";
+const linkPrimary = " bg-blue-ocean text-white hover:bg-blue-ocean/80";
+const linkSecondary = " bg-gray-light text-blue-dark hover:bg-gray-light/80";
+---
+
+<div class="mb-8 flex flex-wrap justify-center gap-2 md:gap-4 lg:mb-12 lg:gap-6">
+  <Link
+    url={socialNetworks[0].url}
+    label="LinkedIn"
+    targ
+    className={styleBase + linkPrimary}
+    icon="simple-icons:linkedin"
+  />
+
+  <Link
+    url={socialNetworks[1].url}
+    label="GitHub"
+    targ
+    className={styleBase + linkSecondary}
+    icon="simple-icons:github"
+  />
+</div>

@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  heading?: boolean;
+}
+
+const styleH1 =
+  "leading-relaxed font-bold tracking-wide text-balance text-gray-light text-lg md:text-xl lg:text-2xl";
+const styleH2 =
+  "leading-relaxed font-bold tracking-wide text-balance text-gray-light md:text-lg lg:text-xl";
+
+const { title, description, heading } = Astro.props;
+---
+
+<div class="mb-8 flex max-w-sm flex-col gap-4 md:max-w-md lg:max-w-3xl">
+  {heading ? (
+    <h1 class={styleH1}>{title}</h1>
+  ) : (
+    <h2 class={styleH2}>{title}</h2>
+  )}
+
+  <p class="text-sm leading-relaxed text-balance text-gray-blue lg:text-base">
+    <slot /> {description}
+  </p>
+</div>
