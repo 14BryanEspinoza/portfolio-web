@@ -1,0 +1,30 @@
+---
+import { socialNetworks } from "@data/links";
+import Link from "@components/Link.astro";
+import ContainerTech from "@components/ContainerTech.astro";
+---
+
+<footer class="bg-black-deep">
+  <ContainerTech />
+
+  <p class="mx-auto max-w-sm text-center font-mono tracking-widest text-blue-light italic md:max-w-md lg:max-w-lg">
+    "Programa no para resolver problemas, sino para crear soluciones."
+  </p>
+
+  <div class="flex flex-col items-center justify-between gap-6 py-12 md:mx-12 md:flex-row">
+    <div class="flex items-center gap-8">
+      {socialNetworks.map((link) => (
+        <Link
+          url={link.url}
+          icon={link.icon}
+          targ
+          className="rounded-full border border-gray-muted p-4 text-gray-blue hover:border-gray-light hover:text-gray-light"
+        />
+      ))}
+    </div>
+
+    <p class="mt-4 text-sm text-gray-slate md:mt-0">
+      14BryanEspinoza - &copy; 2026
+    </p>
+  </div>
+</footer>
