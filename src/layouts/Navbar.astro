@@ -44,7 +44,10 @@ import Link from "@components/Link.astro";
     {linkNavbar.map((link) => {
       return (
         <li>
-          <Link {...link} className="mt-12 lg:mt-0" />
+          <Link
+            {...link}
+            className="mt-12 text-gray-blue hover:text-gray-light lg:mt-0"
+          />
         </li>
       );
     })}
