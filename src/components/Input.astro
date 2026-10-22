@@ -1,0 +1,42 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props {
+  name: string;
+  label: string;
+  type: HTMLAttributes<"input">["type"];
+  placeholder?: string;
+  element?: "input" | "textarea";
+}
+
+const styleInput =
+  "w-full px-4 py-3 rounded-md bg-black-deep/20 border border-gray-muted text-white outline-none";
+
+const { label, type, name, placeholder, element = "input" } = Astro.props;
+---
+
+<div>
+  <label for={name} class="mb-2 block text-sm tracking-widest text-gray-light">
+    {label}
+  </label>
+
+  {element === "input" ? (
+    <input
+      type={type}
+      id={name}
+      name={name}
+      required
+      class={styleInput}
+      placeholder={placeholder}
+    />
+  ) : (
+    <textarea
+      id={name}
+      name={name}
+      rows="5"
+      required
+      class={styleInput}
+      placeholder={placeholder}
+    ></textarea>
+  )}
+</div>

@@ -1,0 +1,20 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  label: string;
+  type: "submit" | "button" | "reset";
+  icon?: string;
+  className?: string;
+}
+
+const styleButton =
+  "w-full flex items-center justify-center gap-2 px-4 py-2 bg-indigo-vibrant text-gray-light rounded-md transition hover:bg-indigo-soft hover:scale-105 active:scale-95";
+
+const { label, type, icon, className = "" } = Astro.props;
+---
+
+<button type={type} class={`${styleButton} ${className}`}>
+  {label}
+  {icon && <Icon name={icon} class="lg" />}
+</button>

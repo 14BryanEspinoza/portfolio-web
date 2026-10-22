@@ -1,0 +1,30 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+const styleLink =
+  "flex items-center gap-4 p-4 rounded-2xl bg-black-deep text-gray-light border border-gray-muted";
+const styleBadged =
+  "size-12 flex items-center justify-center rounded-2xl bg-indigo-soft text-gray-muted";
+
+const { title, description, icon } = Astro.props;
+---
+
+<div class={styleLink}>
+  <div class={styleBadged}>
+    <Icon name={icon} class="text-lg" />
+  </div>
+
+  <div>
+    <p class="mb-2 text-sm tracking-widest text-gray-light uppercase">
+      {title}
+    </p>
+
+    <p class="text-xs tracking-wider text-gray-blue">{description}</p>
+  </div>
+</div>
