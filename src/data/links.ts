@@ -45,4 +45,8 @@ export const socialNetworks: LinksProps[] = [
     url: "https://twitter.com/14bryanespinoza",
     icon: "simple-icons:x",
   },
+  {
+    url: "mailto:14bryespinoza@gmail.com",
+    icon: "simple-icons:gmail",
+  },
 ];
