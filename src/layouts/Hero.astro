@@ -1,0 +1,33 @@
+---
+import { Picture } from "astro:assets";
+import ContainerText from "@components/ContainerText.astro";
+import CTA from "@components/CTA.astro";
+import Typewriter from "@components/Typewriter.astro";
+import Bryan from "../assets/Bryan.jpeg";
+---
+
+<section class="flex min-h-dvh w-full flex-col items-center justify-center bg-black-deep text-center">
+  <figure class="mb-4 size-36 overflow-hidden rounded-full md:size-40 lg:size-44">
+    <Picture
+      src={Bryan}
+      alt="Desarrollador frontend Bryan Espinoza"
+      width={350}
+      height={350}
+      formats={["avif", "webp"]}
+      priority
+    />
+  </figure>
+
+  <ContainerText
+    title="Frontend Development / Performance & Accessibility / AI-Assisted Engineering"
+    heading
+  >
+    <span class="font-extrabold text-blue-light">Bryan Espinoza</span> —
+    interfaces rápidas y accesibles construidas con Astro, React y TypeScript,
+    con flujos de desarrollo potenciados por IA.
+  </ContainerText>
+
+  <CTA />
+
+  <Typewriter />
+</section>
