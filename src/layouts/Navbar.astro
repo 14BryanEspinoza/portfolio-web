@@ -6,7 +6,7 @@ import Link from "@components/Link.astro";
 
 <a
   href={import.meta.env.BASE_URL}
-  class="flex items-center gap-2 text-text-bright transition hover:scale-105 hover:text-white"
+  class="flex items-center gap-2 text-gray-blue transition hover:scale-105 hover:text-gray-light active:scale-95"
 >
   <figure class="size-8">
     <img
@@ -15,7 +15,9 @@ import Link from "@components/Link.astro";
       loading="eager"
     />
   </figure>
-  <span class="text-sm font-bold tracking-wider">14BryanEspinoza</span>
+  <span class="hidden md:block md:font-extrabold md:tracking-widest">
+    14BryanEspinoza
+  </span>
 </a>
 
 <button
@@ -28,14 +30,14 @@ import Link from "@components/Link.astro";
 >
   <Icon
     name="lucide:menu"
-    class="cursor-pointer text-3xl text-text-bright"
+    class="cursor-pointer text-3xl text-white"
     aria-hidden="true"
   />
 </button>
 
 <nav
   id="nav-main"
-  class="hidden h-[91dvh] w-full flex-col items-center justify-center lg:flex lg:h-auto lg:w-auto"
+  class="hidden h-[90dvh] w-full flex-col items-center justify-center lg:flex lg:h-auto lg:w-auto"
   aria-label="navegación principal"
 >
   <ul role="list" class="flex flex-col items-center lg:flex-row lg:gap-8">
@@ -47,13 +49,13 @@ import Link from "@components/Link.astro";
       );
     })}
 
-    <li class="mt-8 border-t border-text-muted pt-8 lg:mt-0 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
+    <li class="mt-8 border-t-2 border-gray-muted pt-8 lg:mt-0 lg:border-t-0 lg:border-l-2 lg:pt-0 lg:pl-8">
       <Link
         url=""
         label="Descargar CV"
         icon="lucide:download"
         download
-        className="rounded-md bg-brand px-4 py-2 text-white hover:bg-brand-hover"
+        className="rounded-md bg-indigo-vibrant px-4 py-2 text-gray-light hover:scale-105 hover:bg-indigo-soft active:scale-95"
       />
     </li>
   </ul>

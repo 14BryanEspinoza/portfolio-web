@@ -5,8 +5,8 @@ interface Props {
 
 import { ClientRouter } from "astro:transitions";
 import { meta } from "@metadata/meta";
-import Navbar from "@layouts/Navbar.astro";
 import Link from "@components/Link.astro";
+import Navbar from "@layouts/Navbar.astro";
 import "../styles/global.css";
 
 const { title } = Astro.props;
@@ -60,7 +60,7 @@ const { title } = Astro.props;
   <body>
     <Link url="#main-content" label="Saltar al contenido principal" skip />
 
-    <header class="sticky top-0 z-40 flex flex-wrap items-center justify-between bg-bg-surface px-8 py-4 lg:px-12 lg:py-6">
+    <header class="sticky top-0 z-40 flex flex-wrap items-center justify-between bg-black-deep p-6 md:px-8 lg:px-12">
       <Navbar />
     </header>
 
