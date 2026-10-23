@@ -1,0 +1,33 @@
+---
+import { Icon } from "astro-icon/components";
+import Badged from "./Badged.astro";
+
+const styleContainer = "p-4 rounded-2xl border bg-black-deep border-gray-muted";
+---
+
+<div class="mb-4 rounded-3xl border border-gray-muted bg-black-dark p-4 md:mb-0">
+  <h2 class="mb-4 flex items-center gap-2 font-bold text-gray-light">
+    <Icon name="lucide:target" class="text-xl text-blue-ocean" />
+    Mis Metas
+  </h2>
+
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <div class={styleContainer}>
+      <Badged
+        title="Full-Stack Developer"
+        description="Dominar tanto el frontend como el backend para construir aplicaciones completas y escalables."
+        icon="lucide:code"
+        className="flex-col items-start border-none bg-transparent"
+      />
+    </div>
+
+    <div class={styleContainer}>
+      <Badged
+        title="Software Engineer"
+        description="Profundizar en la ingeniería de software para diseñar sistemas robustos y de alta calidad"
+        icon="lucide:laptop"
+        className="flex-col items-start border-none bg-transparent"
+      />
+    </div>
+  </div>
+</div>

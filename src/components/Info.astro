@@ -1,0 +1,39 @@
+---
+import Badged from "@components/Badged.astro";
+import { Icon } from "astro-icon/components";
+import Link from "./Link.astro";
+---
+
+<div class="rounded-3xl border border-gray-muted bg-black-dark p-8 lg:col-start-2 lg:row-start-1">
+  <h4 class="mb-4 font-bold text-gray-light">Información Rápida</h4>
+
+  <div class="md:grid md:grid-cols-2">
+    <Badged
+      title="Ubicación"
+      description="Carazo, Nicaragua"
+      icon="lucide:map-pin"
+      className="border-none"
+    />
+
+    <Badged
+      title="Disponibilidad"
+      description="Inmediata"
+      icon="lucide:briefcase"
+      className="border-none"
+    />
+
+    <div class="col-span-2 mt-4 rounded-2xl bg-linear-to-br from-indigo-vibrant to-indigo-soft p-4 text-gray-light">
+      <p class="mb-2 text-xs font-bold tracking-widest text-gray-blue uppercase">
+        Estado Actual
+      </p>
+
+      <p class="mb-4 font-bold">Abierto a nuevas oportunidades laborales ❤️‍🔥</p>
+
+      <Link
+        url="#contacto"
+        label="Contáctame ->"
+        className="w-fit rounded-xl bg-gray-light px-8 py-2 font-bold text-indigo-vibrant"
+      />
+    </div>
+  </div>
+</div>
