@@ -21,6 +21,8 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gray-muted) var(--color-black-deep);
 }
 
 body {
