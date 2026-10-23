@@ -65,30 +65,44 @@ import Link from "@components/Link.astro";
 </nav>
 
 <script>
-  const btn = document.getElementById("menu-toggle");
-  const nav = document.getElementById("nav-main");
+  let teardown: AbortController | null = null;
 
-  let open = false;
+  const setupNavbar = () => {
+    teardown?.abort();
+    teardown = new AbortController();
+    const { signal } = teardown;
 
-  const setOpen = (next: boolean) => {
-    open = next;
+    const btn = document.getElementById("menu-toggle");
+    const nav = document.getElementById("nav-main");
 
-    btn?.setAttribute("aria-expanded", String(open));
+    let open = false;
 
-    nav?.classList.toggle("hidden", !open);
-    nav?.classList.toggle("flex", open);
+    const setOpen = (next: boolean) => {
+      open = next;
+
+      btn?.setAttribute("aria-expanded", String(open));
+
+      nav?.classList.toggle("hidden", !open);
+      nav?.classList.toggle("flex", open);
+    };
+
+    btn?.addEventListener("click", () => setOpen(!open), { signal });
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+        if (event.key === "Escape" && open) {
+          setOpen(false);
+          btn?.focus();
+        }
+      },
+      { signal },
+    );
+
+    nav?.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setOpen(false), { signal });
+    });
   };
 
-  btn?.addEventListener("click", () => setOpen(!open));
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && open) {
-      setOpen(false);
-      btn?.focus();
-    }
-  });
-
-  nav?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => setOpen(false));
-  });
+  document.addEventListener("astro:page-load", setupNavbar);
 </script>
