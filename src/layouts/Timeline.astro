@@ -1,0 +1,59 @@
+---
+import BadgedCard from "@components/BadgedCard.astro";
+import ContainerText from "@components/ContainerText.astro";
+---
+
+<section class="bg-black-dark py-20 md:py-24">
+  <ContainerText
+    title="Experiencia y Formación"
+    subtitle="Trayectoria"
+    description="Mi camino en el mundo de la tecnología, desde mis inicios académicos hasta mi evolución como desarrollador."
+    classNameDiv="text-center"
+  />
+
+  <div class="container mx-auto px-4 md:px-6">
+    <!-- Timeline Container -->
+    <div class="relative mx-auto max-w-4xl">
+      <!-- Central Line -->
+      <div class="absolute top-0 bottom-0 left-4 w-0.5 bg-gray-muted md:left-1/2 md:-translate-x-1/2"></div>
+
+      <div class="space-y-12">
+        <BadgedCard
+          title="Inicio de mi Carrera Universitaria"
+          side="right"
+          date="2020"
+          description="Comencé mi formación profesional en la carrera de Ingeniería en Sistemas, sentando las bases teóricas de la computación."
+        />
+
+        <BadgedCard
+          title="Desarrollo Web Frontend"
+          side="left"
+          date="2022"
+          description="Inicie mi camino autodidacta en el desarrollo web, especializándome en tecnologías como Astro, React y TypeScript para crear interfaces interactivas."
+        />
+
+        <BadgedCard
+          title="Mentors International"
+          side="right"
+          date="2024"
+          description="Completé con éxito el programa de formación intensiva, fortaleciendo mis habilidades técnicas y blandas en un entorno profesional."
+          url={import.meta.env.BASE_URL + "mentors.pdf"}
+        />
+
+        <BadgedCard
+          title="Finalización de Carrera"
+          side="left"
+          date="2026"
+          description="Culminación de mi carrera profesional, obteniendo el título de Ingeniero en Sistemas."
+        />
+
+        <BadgedCard
+          title="Iniciando mi camino Full-Stack"
+          side="right"
+          date="2027"
+          description="Iniciando mi camino en el mundo del desarrollo Backend y Database, explorando nuevas tecnologías y arquitecturas para convertirme en un desarrollador Full-Stack."
+        />
+      </div>
+    </div>
+  </div>
+</section>
