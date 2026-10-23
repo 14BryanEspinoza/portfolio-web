@@ -1,3 +1,5 @@
+const canonical = new URL(import.meta.env.BASE_URL, import.meta.env.SITE).href;
+
 interface MetaProps {
   title: string;
   description: string;
@@ -17,5 +19,5 @@ export const meta: MetaProps = {
   author: "14BryanEspinoza",
   image: "https://14bryanespinoza.github.io/portfolio-web/preview.png",
   imageAlt: "Preview del proyecto Portfolio Web",
-  canonical: import.meta.env.BASE_URL,
+  canonical,
 };
