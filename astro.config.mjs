@@ -14,7 +14,7 @@ export default defineConfig({
 
   prefetch: true,
 
-  site: "https://14bryanespinoza.github.io/porftolio-web/",
+  site: "https://14bryanespinoza.github.io/portfolio-web/",
   base: "/portfolio-web/",
   build: { assets: "assets" },
 
@@ -22,7 +22,7 @@ export default defineConfig({
     service: sharpImageService({
       avif: { effort: 4, chromaSubsampling: "4:2:0" },
       webp: { effort: 5 },
-      jpeg: { mozjpeg:  true },
+      jpeg: { mozjpeg: true },
       png: { compressionLevel: 9 },
     }),
   },
