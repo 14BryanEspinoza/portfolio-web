@@ -1,5 +1,14 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro";
+import Hero from "@layouts/Hero.astro";
+import Contact from "@layouts/Contact.astro";
+import Footer from "@layouts/Footer.astro";
 ---
 
-<Layout />
+<Layout>
+  <main id="main-content">
+    <Hero />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>
