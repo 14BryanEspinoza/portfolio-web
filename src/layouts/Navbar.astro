@@ -102,6 +102,31 @@ import Link from "@components/Link.astro";
     nav?.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => setOpen(false), { signal });
     });
+
+    nav?.querySelectorAll("a").forEach((link) => {
+      link.addEventListener(
+        "click",
+        (e) => {
+          setOpen(false);
+
+          const href = link.getAttribute("href");
+          if (href && href.includes("#")) {
+            const hash = href.split("#")[1];
+            const target = document.getElementById(hash);
+
+            if (target && "startViewTransition" in document) {
+              e.preventDefault();
+
+              document.startViewTransition(() => {
+                target.scrollIntoView({ behavior: "instant" });
+                history.pushState(null, "", `#${hash}`);
+              });
+            }
+          }
+        },
+        { signal },
+      );
+    });
   };
 
   document.addEventListener("astro:page-load", setupNavbar);
