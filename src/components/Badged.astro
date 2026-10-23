@@ -5,6 +5,7 @@ interface Props {
   title: string;
   description: string;
   icon: string;
+  className?: string;
 }
 
 const styleLink =
@@ -12,10 +13,10 @@ const styleLink =
 const styleBadged =
   "size-12 flex items-center justify-center rounded-2xl bg-indigo-soft text-gray-muted";
 
-const { title, description, icon } = Astro.props;
+const { title, description, icon, className } = Astro.props;
 ---
 
-<div class={styleLink}>
+<div class={styleLink + " " + className}>
   <div class={styleBadged}>
     <Icon name={icon} class="text-lg" />
   </div>
@@ -25,6 +26,8 @@ const { title, description, icon } = Astro.props;
       {title}
     </p>
 
-    <p class="text-xs tracking-wider text-gray-blue">{description}</p>
+    <p class="text-xs leading-relaxed tracking-wider text-gray-blue">
+      {description}
+    </p>
   </div>
 </div>
