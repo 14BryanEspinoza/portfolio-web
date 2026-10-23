@@ -1,0 +1,51 @@
+---
+import Link from "@components/Link.astro";
+
+interface Props {
+  title: string;
+  date: string;
+  description: string;
+  side: "left" | "right";
+  url?: string;
+}
+
+const { title, date, description, side, url } = Astro.props;
+---
+
+<div class="relative flex flex-col gap-8 md:flex-row md:gap-0">
+  {side === "left" && <div class="hidden md:block md:w-1/2"></div>}
+
+  <div
+    class=`md:w-1/2 ${side === "left" ? "md:pl-12 md:text-left" : "md:pr-12 md:text-right"}`
+  >
+    <div class="rounded-2xl border border-gray-muted bg-black-deep/80 px-8 py-6">
+      <span class="mb-4 inline-block rounded-full bg-blue-ocean px-3 py-1 text-xs font-bold text-gray-light">
+        {date}
+      </span>
+
+      <h4 class="mb-4 font-bold tracking-widest text-gray-light">{title}</h4>
+
+      <p class="text-sm leading-relaxed text-balance text-gray-slate">
+        {description}
+      </p>
+
+      {url && (
+        <div
+          class={`flex ${side === "left" ? "justify-start" : "justify-end"}`}
+        >
+          <Link
+            label="Ver Certificado"
+            targ
+            url={url}
+            icon="lucide:link"
+            className="mt-4 w-fit text-gray-blue"
+          />
+        </div>
+      )}
+    </div>
+  </div>
+
+  <div class="absolute top-6 left-4 z-10 hidden size-4 rounded-full border-4 border-gray-muted bg-indigo-vibrant md:left-1/2 md:block md:-translate-x-1/2"></div>
+
+  {side === "right" && <div class="hidden md:block md:w-1/2"></div>}
+</div>
