@@ -1,0 +1,86 @@
+---
+import ContainerText from "@components/ContainerText.astro";
+import TitleTech from "@components/TitleTech.astro";
+import BadgedTech from "@components/BadgedTech.astro";
+import {
+  techFrontend,
+  techTools,
+  techBackend,
+  techDatabase,
+  techTest,
+  techIA,
+} from "@data/tech.ts";
+---
+
+<section id="stack" class="bg-black-deep py-20 md:py-24">
+  <ContainerText
+    title="Mi Tech Stack"
+    subtitle="Habilidades"
+    description="Tecnologías y herramientas que utilizo para dar vida a ideas y soluciones digitales."
+    classNameDiv="text-center"
+  />
+
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 md:gap-8">
+      <div>
+        <TitleTech title="Frontend" icon="simple-icons:substack" />
+
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {techFrontend.map((tech) => (
+            <BadgedTech {...tech} />
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <TitleTech title="Herramientas" icon="simple-icons:elasticstack" />
+
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {techTools.map((tech) => (
+            <BadgedTech {...tech} />
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <TitleTech title="Backend" icon="simple-icons:carrd" />
+
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {techBackend.map((tech) => (
+            <BadgedTech {...tech} />
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <TitleTech title="Database" icon="simple-icons:databricks" />
+
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {techDatabase.map((tech) => (
+            <BadgedTech {...tech} />
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <TitleTech title="Test" icon="simple-icons:speedtest" />
+
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {techTest.map((tech) => (
+            <BadgedTech {...tech} />
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <TitleTech title="IA" icon="simple-icons:claudecode" />
+
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {techIA.map((tech) => (
+            <BadgedTech {...tech} />
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
