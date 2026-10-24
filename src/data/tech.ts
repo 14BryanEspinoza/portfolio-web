@@ -67,7 +67,7 @@ export const techFrontend: Props[] = [
 
 export const techBackend: Props[] = [
   {
-    label: "Node.JS",
+    label: "Node.js",
     icon: "simple-icons:nodedotjs",
     level: "Principiante",
   },
@@ -93,7 +93,7 @@ export const techDatabase: Props[] = [
 
 export const techTest: Props[] = [
   {
-    label: "EsLint",
+    label: "ESLint",
     icon: "simple-icons:eslint",
     level: "Intermedio",
   },
