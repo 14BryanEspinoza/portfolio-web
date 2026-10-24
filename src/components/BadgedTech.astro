@@ -1,0 +1,29 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  label: string;
+  icon: string;
+  level: "Principiante" | "Intermedio" | "Avanzado";
+}
+
+const { label, icon, level } = Astro.props;
+---
+
+<div class="flex items-center gap-4 rounded-2xl border border-gray-muted bg-black-dark p-4">
+  <div class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-black-deep">
+    <Icon name={icon} class="text-gray-blue" />
+  </div>
+
+  <div class="flex-1">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold tracking-widest text-gray-light">
+        {label}
+      </span>
+
+      <span class="rounded-full bg-gray-slate px-2 py-1 text-xs text-gray-light">
+        {level}
+      </span>
+    </div>
+  </div>
+</div>
