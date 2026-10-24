@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+
+import ContainerText from "@components/ContainerText.astro";
+import Card from "@components/Card.astro";
+
+const projects = await getCollection("projects");
+---
+
+<section id="proyectos" class="bg-black-deep py-20 md:py-24">
+  <ContainerText
+    title="Proyectos Destacados"
+    subtitle="Porfolio"
+    description=`"Programa no para resolver problemas, si no para crear soluciones"`
+    classNameDiv="text-center"
+  />
+
+  <div class="mx-4 grid gap-4 md:grid-cols-2 lg:mx-auto lg:max-w-7xl lg:grid-cols-3 lg:gap-8">
+    {projects.map((project) => (
+      <Card {...project.data} />
+    ))}
+  </div>
+</section>
