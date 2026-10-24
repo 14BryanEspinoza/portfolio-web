@@ -31,22 +31,27 @@ export const linkNavbar: LinksProps[] = [
 export const socialNetworks: LinksProps[] = [
   {
     url: "https://www.linkedin.com/in/14bryanespinoza",
+    label: "LinkedIn",
     icon: "simple-icons:linkedin",
   },
   {
     url: "https://github.com/14bryanespinoza",
+    label: "GitHub",
     icon: "simple-icons:github",
   },
   {
     url: "https://www.facebook.com/14bryanespinoza",
+    label: "Facebook",
     icon: "simple-icons:facebook",
   },
   {
     url: "https://twitter.com/14bryanespinoza",
+    label: "X (Twitter)",
     icon: "simple-icons:x",
   },
   {
     url: "mailto:14bryespinoza@gmail.com",
+    label: "Email",
     icon: "simple-icons:gmail",
   },
 ];

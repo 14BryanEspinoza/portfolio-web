@@ -3,6 +3,7 @@ interface Props {
   title?: string;
   description?: string;
   keywords?: string;
+  noindex?: boolean;
 }
 
 import { ClientRouter } from "astro:transitions";
@@ -11,7 +12,7 @@ import Link from "@components/Link.astro";
 import Navbar from "@layouts/Navbar.astro";
 import "../styles/global.css";
 
-const { title, description, keywords } = Astro.props;
+const { title, description, keywords, noindex = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,13 +25,16 @@ const { title, description, keywords } = Astro.props;
     <meta name="description" content={description || meta.description} />
     <meta name="keywords" content={keywords || meta.keywords} />
     <meta name="author" content={meta.author} />
-    <meta name="robots" content="index, follow" />
+    <meta
+      name="robots"
+      content={noindex ? "noindex, nofollow" : "index, follow"}
+    />
 
     <meta property="og:title" content={title || meta.title} />
     <meta property="og:description" content={description || meta.description} />
     <meta property="og:image" content={meta.image} />
     <meta property="og:image:alt" content={meta.imageAlt} />
-    <meta property="og:url" content={meta.canonical} />
+    {!noindex && <meta property="og:url" content={meta.canonical} />}
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_NI" />
 
@@ -50,7 +54,7 @@ const { title, description, keywords } = Astro.props;
       rel="stylesheet"
     />
 
-    <link rel="canonical" href={meta.canonical} />
+    {!noindex && <link rel="canonical" href={meta.canonical} />}
     <link
       rel="icon"
       type="image/png"

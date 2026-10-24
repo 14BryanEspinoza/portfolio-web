@@ -4,6 +4,7 @@ import { Icon } from "astro-icon/components";
 interface Props {
   url: string;
   label?: string;
+  ariaLabel?: string;
   targ?: boolean;
   download?: boolean;
   icon?: string;
@@ -16,7 +17,16 @@ const baseStyle =
 const skipStyle =
   "sr-only bg-indigo-vibrant transition focus:not-sr-only focus:absolute focus:top-5 focus:left-6 focus:z-50 focus:px-6 focus:py-2 focus:rounded-md focus:font-bold focus:text-gray-light";
 
-const { url, label, targ, download, icon, skip, className = "" } = Astro.props;
+const {
+  url,
+  label,
+  ariaLabel,
+  targ,
+  download,
+  icon,
+  skip,
+  className = "",
+} = Astro.props;
 ---
 
 <a
@@ -24,6 +34,8 @@ const { url, label, targ, download, icon, skip, className = "" } = Astro.props;
   target={targ ? "_blank" : ""}
   rel={targ ? "noopener noreferrer" : ""}
   download={download}
+  aria-label={ariaLabel || undefined}
+  title={ariaLabel || undefined}
   class={`${skip ? skipStyle : baseStyle} ${className}`}
 >
   {icon && <Icon name={icon} class="text-lg" />}

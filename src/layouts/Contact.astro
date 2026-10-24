@@ -44,6 +44,7 @@ import Button from "@components/Button.astro";
         {socialNetworks.map((link) => (
           <Link
             url={link.url}
+            ariaLabel={link.label}
             icon={link.icon}
             targ
             className="text-gray-blue hover:border-gray-light hover:text-gray-light"

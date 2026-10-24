@@ -16,6 +16,7 @@ import ContainerTech from "@components/ContainerTech.astro";
       {socialNetworks.map((link) => (
         <Link
           url={link.url}
+          ariaLabel={link.label}
           icon={link.icon}
           targ
           className="rounded-full border border-gray-muted p-4 text-gray-blue hover:border-gray-light hover:text-gray-light"
