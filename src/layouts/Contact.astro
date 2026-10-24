@@ -58,20 +58,27 @@ import Button from "@components/Button.astro";
       method="POST"
       class="mx-auto grid max-w-sm gap-8 rounded-2xl border border-gray-muted bg-black-dark p-8 md:col-start-2 md:row-span-2 md:row-start-1 md:w-full"
     >
-      <Input name="name" label="Nombre" type="text" placeholder="John Doe" />
+      <Input
+        name="name"
+        label="Nombre"
+        type="text"
+        placeholder="Tu nombre completo"
+        autocomplete="name"
+      />
 
       <Input
         name="email"
         label="Email"
         type="email"
-        placeholder="example@gmail.com"
+        placeholder="tu@email.com"
+        autocomplete="email"
       />
 
       <Input
         name="message"
         label="Mensaje"
         type="text"
-        placeholder="¿En qué puedo ayudarte?"
+        placeholder="Cuéntame sobre tu proyecto, plazos y objetivos"
         element="textarea"
       />
 

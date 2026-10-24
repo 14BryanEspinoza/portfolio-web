@@ -7,12 +7,20 @@ interface Props {
   type: HTMLAttributes<"input">["type"];
   placeholder?: string;
   element?: "input" | "textarea";
+  autocomplete?: string;
 }
 
 const styleInput =
-  "w-full px-4 py-3 rounded-md bg-black-deep/20 border border-gray-muted text-white outline-none";
+  "w-full px-4 py-3 rounded-md bg-black-deep/20 border border-gray-muted text-white outline-none placeholder:text-gray-slate";
 
-const { label, type, name, placeholder, element = "input" } = Astro.props;
+const {
+  label,
+  type,
+  name,
+  placeholder,
+  element = "input",
+  autocomplete,
+} = Astro.props;
 ---
 
 <div>
@@ -26,6 +34,7 @@ const { label, type, name, placeholder, element = "input" } = Astro.props;
       id={name}
       name={name}
       required
+      autocomplete={autocomplete}
       class={styleInput}
       placeholder={placeholder}
     />
