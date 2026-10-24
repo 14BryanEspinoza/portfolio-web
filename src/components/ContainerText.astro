@@ -12,11 +12,17 @@ const styleH1 =
 const styleH2 =
   "text-sm font-bold font-mono uppercase tracking-widest text-indigo-soft";
 
-const { title, subtitle, description, heading, classNameDiv } = Astro.props;
+const {
+  title,
+  subtitle,
+  description,
+  heading,
+  classNameDiv = "",
+} = Astro.props;
 ---
 
 <div
-  class=` mx-auto  md:max-w-md lg:max-w-3xl flex flex-col gap-4 mb-12 ${classNameDiv}`
+  class=`px-4 mx-auto md:max-w-md lg:max-w-3xl flex flex-col gap-4 mb-12 ${classNameDiv}`
 >
   {subtitle && <p class={styleH2}>{subtitle}</p>}
 
