@@ -85,7 +85,7 @@ export const techDatabase: Props[] = [
     level: "Principiante",
   },
   {
-    label: "MySQL",
+    label: "SQLite",
     icon: "simple-icons:sqlite",
     level: "Principiante",
   },
