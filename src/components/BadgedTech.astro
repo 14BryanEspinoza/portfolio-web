@@ -16,19 +16,22 @@ const levelColors: Record<string, string> = {
 const { label, icon, level } = Astro.props;
 ---
 
-<div class="flex items-center gap-4 rounded-2xl border border-gray-muted bg-black-dark p-4 transition-colors duration-200 hover:border-gray-slate">
-  <div class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-black-deep">
-    <Icon name={icon} class="text-gray-blue" />
+<div class="flex items-center gap-3 rounded-2xl border border-gray-muted bg-black-dark p-3 transition-colors duration-200 hover:border-gray-slate sm:gap-4 sm:p-3.5 lg:p-4">
+  <div class="flex size-9 shrink-0 items-center justify-center rounded-xl bg-black-deep sm:size-10">
+    <Icon name={icon} class="text-base text-gray-blue sm:text-lg" />
   </div>
 
-  <div class="flex-1">
-    <div class="flex items-center justify-between">
-      <span class="text-sm font-semibold tracking-widest text-gray-light">
+  <div class="min-w-0 flex-1">
+    <div class="flex items-center justify-between gap-2">
+      <span
+        class="truncate text-xs font-semibold tracking-wide text-gray-light sm:text-sm"
+        title={label}
+      >
         {label}
       </span>
 
       <span
-        class={`rounded-full px-2.5 py-1 text-xs font-medium text-gray-light ${levelColors[level]}`}
+        class={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium text-gray-light sm:px-2.5 sm:py-1 sm:text-xs ${levelColors[level]}`}
       >
         {level}
       </span>

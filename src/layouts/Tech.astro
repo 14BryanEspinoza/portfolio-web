@@ -21,11 +21,11 @@ import {
   />
 
   <div class="container mx-auto px-4 md:px-6">
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8">
       <div>
         <TitleTech title="Frontend" icon="lucide:layout-dashboard" />
 
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
           {techFrontend.map((tech) => (
             <BadgedTech {...tech} />
           ))}
@@ -35,7 +35,7 @@ import {
       <div>
         <TitleTech title="Herramientas" icon="lucide:wrench" />
 
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
           {techTools.map((tech) => (
             <BadgedTech {...tech} />
           ))}
@@ -45,7 +45,7 @@ import {
       <div>
         <TitleTech title="Backend" icon="lucide:server" />
 
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
           {techBackend.map((tech) => (
             <BadgedTech {...tech} />
           ))}
@@ -55,7 +55,7 @@ import {
       <div>
         <TitleTech title="Database" icon="lucide:database" />
 
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
           {techDatabase.map((tech) => (
             <BadgedTech {...tech} />
           ))}
@@ -65,7 +65,7 @@ import {
       <div>
         <TitleTech title="Test" icon="lucide:check-check" />
 
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
           {techTest.map((tech) => (
             <BadgedTech {...tech} />
           ))}
@@ -75,7 +75,7 @@ import {
       <div>
         <TitleTech title="IA" icon="lucide:brain" />
 
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
           {techIA.map((tech) => (
             <BadgedTech {...tech} />
           ))}
