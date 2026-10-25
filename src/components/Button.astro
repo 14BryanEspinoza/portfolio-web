@@ -9,12 +9,12 @@ interface Props {
 }
 
 const styleButton =
-  "w-full flex items-center justify-center gap-2 px-4 py-2 bg-indigo-vibrant text-gray-light rounded-md transition hover:bg-indigo-soft hover:scale-105 active:scale-95";
+  "w-full flex items-center justify-center gap-2 px-4 py-3 bg-indigo-vibrant text-gray-light font-semibold rounded-xl transition-all duration-200 hover:bg-indigo-soft hover:shadow-md hover:shadow-indigo-vibrant/20 active:scale-95 cursor-pointer";
 
 const { label, type, icon, className = "" } = Astro.props;
 ---
 
 <button type={type} class={`${styleButton} ${className}`}>
   {label}
-  {icon && <Icon name={icon} class="lg" />}
+  {icon && <Icon name={icon} class="text-lg" />}
 </button>

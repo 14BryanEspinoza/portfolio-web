@@ -11,7 +11,7 @@ interface Props {
 const styleLink =
   "flex items-center gap-4 p-4 mb-2 rounded-2xl bg-black-deep text-gray-light border border-gray-muted md:mb-4";
 const styleBadged =
-  "size-12 flex items-center justify-center rounded-2xl bg-indigo-soft text-gray-muted";
+  "size-12 flex shrink-0 items-center justify-center rounded-2xl bg-indigo-soft text-gray-muted";
 
 const { title, description, icon, className = "" } = Astro.props;
 ---
@@ -22,7 +22,7 @@ const { title, description, icon, className = "" } = Astro.props;
   </div>
 
   <div>
-    <p class="mb-2 text-sm tracking-widest text-gray-light uppercase">
+    <p class="mb-1 text-sm tracking-widest text-gray-light uppercase">
       {title}
     </p>
 

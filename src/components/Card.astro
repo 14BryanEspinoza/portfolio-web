@@ -19,7 +19,7 @@ interface Props {
 const { title, description, topic, image, imageAlt, url } = Astro.props;
 ---
 
-<article class="overflow-hidden rounded-2xl border border-gray-muted bg-black-dark transition hover:scale-105">
+<article class="group flex flex-col overflow-hidden rounded-2xl border border-gray-muted bg-black-dark transition-all duration-300 hover:border-gray-slate hover:shadow-lg hover:shadow-indigo-vibrant/5">
   <div class="relative aspect-video overflow-hidden">
     <Picture
       src={image}
@@ -28,11 +28,11 @@ const { title, description, topic, image, imageAlt, url } = Astro.props;
       formats={["avif", "webp"]}
       loading="lazy"
       decoding="async"
-      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
     />
   </div>
 
-  <div class="flex h-75 flex-col p-6">
+  <div class="flex flex-1 flex-col p-6">
     <div class="mb-4 flex flex-wrap gap-2">
       {topic.map((topic) => (
         <Topic topic={topic} />
@@ -41,7 +41,7 @@ const { title, description, topic, image, imageAlt, url } = Astro.props;
 
     <h2 class="mb-2 text-xl font-bold text-gray-light">{title}</h2>
 
-    <p class="mb-4 line-clamp-3 text-sm leading-relaxed text-balance text-gray-blue">
+    <p class="mb-6 line-clamp-3 text-sm leading-relaxed text-balance text-gray-blue">
       {description}
     </p>
 
@@ -51,14 +51,14 @@ const { title, description, topic, image, imageAlt, url } = Astro.props;
         label="Demo"
         icon="lucide:link"
         targ
-        className="inline-flex h-full flex-1 items-center justify-center gap-2 rounded-xl bg-indigo-vibrant text-gray-light transition hover:scale-105 hover:bg-indigo-soft active:scale-95"
+        className="inline-flex h-full flex-1 items-center justify-center gap-2 rounded-xl bg-indigo-vibrant py-3 text-gray-light transition-all duration-200 hover:bg-indigo-soft hover:shadow-md hover:shadow-indigo-vibrant/20"
       />
 
       <Link
         url={url.repo}
         icon="simple-icons:github"
         targ
-        className="rounded-xl bg-black-deep p-4 text-gray-light"
+        className="flex items-center justify-center rounded-xl bg-black-deep p-4 text-gray-light transition-colors duration-200 hover:bg-gray-muted"
       />
     </div>
   </div>

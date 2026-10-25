@@ -7,10 +7,16 @@ interface Props {
   level: "Principiante" | "Intermedio" | "Avanzado";
 }
 
+const levelColors: Record<string, string> = {
+  Principiante: "bg-level-beginner",
+  Intermedio: "bg-level-intermediate",
+  Avanzado: "bg-level-advanced",
+};
+
 const { label, icon, level } = Astro.props;
 ---
 
-<div class="flex items-center gap-4 rounded-2xl border border-gray-muted bg-black-dark p-4">
+<div class="flex items-center gap-4 rounded-2xl border border-gray-muted bg-black-dark p-4 transition-colors duration-200 hover:border-gray-slate">
   <div class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-black-deep">
     <Icon name={icon} class="text-gray-blue" />
   </div>
@@ -21,7 +27,9 @@ const { label, icon, level } = Astro.props;
         {label}
       </span>
 
-      <span class="rounded-full bg-gray-slate px-2 py-1 text-xs text-gray-light">
+      <span
+        class={`rounded-full px-2.5 py-1 text-xs font-medium text-gray-light ${levelColors[level]}`}
+      >
         {level}
       </span>
     </div>

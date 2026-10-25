@@ -66,10 +66,10 @@ const { title, description, keywords, noindex = false } = Astro.props;
     <ClientRouter />
   </head>
 
-  <body>
+  <body class="bg-black-deep">
     <Link url="#main-content" label="Saltar al contenido principal" skip />
 
-    <header class="sticky top-0 z-40 flex flex-wrap items-center justify-between bg-black-deep p-6 md:px-8 lg:px-12">
+    <header class="sticky top-0 z-40 flex flex-wrap items-center justify-between border-b border-gray-muted/50 bg-black-deep/80 px-6 py-4 backdrop-blur-xl md:px-8 lg:px-12">
       <Navbar />
     </header>
 

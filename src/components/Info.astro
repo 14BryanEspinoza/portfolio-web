@@ -4,8 +4,11 @@ import { Icon } from "astro-icon/components";
 import Link from "./Link.astro";
 ---
 
-<div class="rounded-3xl border border-gray-muted bg-black-deep p-8 lg:col-start-2 lg:row-start-1">
-  <h4 class="mb-4 font-bold text-gray-light">Información Rápida</h4>
+<div class="rounded-2xl border border-gray-muted bg-black-deep p-8 transition-colors duration-200 hover:border-gray-slate lg:col-start-2 lg:row-start-1">
+  <h4 class="mb-4 flex items-center gap-3 font-bold text-gray-light">
+    <Icon name="lucide:info" class="text-xl text-blue-ocean" />
+    Información Rápida
+  </h4>
 
   <div class="md:grid md:grid-cols-2">
     <Badged
@@ -32,7 +35,7 @@ import Link from "./Link.astro";
       <Link
         url="#contact"
         label="Contáctame ->"
-        className="w-fit rounded-xl bg-gray-light px-8 py-2 font-bold text-indigo-vibrant"
+        className="w-fit rounded-xl bg-gray-light px-8 py-2 font-bold text-indigo-vibrant transition-all duration-200 hover:bg-white hover:shadow-md"
       />
     </div>
   </div>
