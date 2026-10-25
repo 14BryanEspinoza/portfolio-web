@@ -2,9 +2,12 @@
 import { socialNetworks } from "@data/links";
 import Link from "@components/Link.astro";
 
-const styleBase = "items-center px-6 py-3 font-semibold rounded-md ";
-const linkPrimary = " bg-blue-ocean text-white hover:bg-blue-ocean/80";
-const linkSecondary = " bg-gray-light text-blue-dark hover:bg-gray-light/80";
+const styleBase =
+  "items-center px-6 py-3 font-semibold rounded-xl transition-all duration-200 hover:shadow-md active:scale-95";
+const linkPrimary =
+  " bg-blue-ocean text-gray-light hover:bg-blue-ocean/85 hover:shadow-blue-ocean/20";
+const linkSecondary =
+  " bg-gray-light text-blue-dark hover:bg-white hover:shadow-gray-light/20";
 ---
 
 <div class="mb-8 flex flex-wrap justify-center gap-2 md:gap-4 lg:mb-12 lg:gap-6">
