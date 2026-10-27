@@ -39,4 +39,11 @@ export default [
       "tailwindcss/no-custom-classname": "off",
     },
   },
+
+  {
+    files: ["src/components/JsonLd.astro"],
+    rules: {
+      "astro/no-set-html-directive": "off",
+    },
+  },
 ];

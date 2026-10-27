@@ -4,15 +4,47 @@ interface Props {
   description?: string;
   keywords?: string;
   noindex?: boolean;
+  canonical?: string;
 }
 
-import { ClientRouter } from "astro:transitions";
 import { meta } from "@metadata/meta";
+import { socialNetworks } from "@data/links";
+import JsonLd from "@components/JsonLd.astro";
 import Link from "@components/Link.astro";
 import Navbar from "@layouts/Navbar.astro";
 import "../styles/global.css";
 
-const { title, description, keywords, noindex = false } = Astro.props;
+const {
+  title,
+  description,
+  keywords,
+  noindex = false,
+  canonical,
+} = Astro.props;
+
+const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Bryan Espinoza",
+  alternateName: meta.author,
+  url: new URL(import.meta.env.BASE_URL, Astro.site).href,
+  image: meta.image,
+  jobTitle: "Frontend Developer",
+  description: meta.description,
+  sameAs: socialNetworks
+    .map((network) => network.url)
+    .filter((url) => url.startsWith("http")),
+  knowsAbout: [
+    "Astro",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Web Performance",
+    "Web Accessibility",
+  ],
+};
 ---
 
 <!doctype html>
@@ -32,11 +64,15 @@ const { title, description, keywords, noindex = false } = Astro.props;
 
     <meta property="og:title" content={title || meta.title} />
     <meta property="og:description" content={description || meta.description} />
+    <meta property="og:site_name" content={meta.siteName} />
     <meta property="og:image" content={meta.image} />
     <meta property="og:image:alt" content={meta.imageAlt} />
-    {!noindex && <meta property="og:url" content={meta.canonical} />}
+    <meta property="og:image:type" content={meta.imageType} />
+    <meta property="og:image:width" content={String(meta.imageWidth)} />
+    <meta property="og:image:height" content={String(meta.imageHeight)} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="es_NI" />
+    <meta property="og:locale" content={meta.locale} />
+    {!noindex && <meta property="og:url" content={canonicalURL} />}
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title || meta.title} />
@@ -54,16 +90,20 @@ const { title, description, keywords, noindex = false } = Astro.props;
       rel="stylesheet"
     />
 
-    {!noindex && <link rel="canonical" href={meta.canonical} />}
+    {!noindex && <link rel="canonical" href={canonicalURL} />}
+    {!noindex && <JsonLd data={personJsonLd} />}
+
     <link
       rel="icon"
       type="image/png"
       href={import.meta.env.BASE_URL + "favicon.png"}
     />
+    <link
+      rel="apple-touch-icon"
+      href={import.meta.env.BASE_URL + "favicon.png"}
+    />
 
     <title>{title || meta.title}</title>
-
-    <ClientRouter />
   </head>
 
   <body class="bg-black-deep">
