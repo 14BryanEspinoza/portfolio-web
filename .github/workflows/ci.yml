@@ -2,9 +2,15 @@ name: CI - Lint & TypeCheck
 
 on:
   push:
-    branches: ["**"]
+    branches: [main]
   pull_request:
-    branches: ["**"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   lint-and-typecheck:
@@ -16,13 +22,11 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 11.21.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: "24.16.0"
           cache: "pnpm"
 
       - name: Install dependencies
@@ -34,8 +38,8 @@ jobs:
       - name: Run format check
         run: pnpm run format:check
 
-      - name: Run build
-        run: pnpm run build
-
       - name: Check TypeScript & Astro types
         run: pnpm run check
+
+      - name: Run build
+        run: pnpm run build

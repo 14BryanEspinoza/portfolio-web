@@ -10,8 +10,42 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
+  quality:
+    name: Quality gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.16.0"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run linter
+        run: pnpm run lint
+
+      - name: Run format check
+        run: pnpm run format:check
+
+      - name: Check TypeScript & Astro types
+        run: pnpm run check
+
   build:
+    name: Build
+    needs: quality
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -20,9 +54,11 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v6
         with:
-          node-version: 22
+          package-manager: pnpm
+          node-version: "24.16.0"
 
   deploy:
+    name: Deploy
     needs: build
     runs-on: ubuntu-latest
     environment:
