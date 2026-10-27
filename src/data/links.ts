@@ -4,6 +4,8 @@ interface LinksProps {
   icon?: string;
 }
 
+export const contactEmail = "14bryespinoza@gmail.com";
+
 export const linkNavbar: LinksProps[] = [
   { url: import.meta.env.BASE_URL, label: "Inicio", icon: "lucide:home" },
   {
@@ -50,7 +52,7 @@ export const socialNetworks: LinksProps[] = [
     icon: "simple-icons:x",
   },
   {
-    url: "mailto:14bryespinoza@gmail.com",
+    url: `mailto:${contactEmail}`,
     label: "Email",
     icon: "simple-icons:gmail",
   },
