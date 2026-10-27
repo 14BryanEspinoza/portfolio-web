@@ -2,8 +2,9 @@
   "name": "portfolio-web",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@11.21.0",
   "engines": {
-    "node": ">=22.22.0"
+    "node": "^22.22.3 || ^24.16.0 || >=26.3.0"
   },
   "scripts": {
     "dev": "astro dev",
