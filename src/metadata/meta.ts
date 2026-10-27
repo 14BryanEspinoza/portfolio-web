@@ -1,13 +1,18 @@
-const canonical = new URL(import.meta.env.BASE_URL, import.meta.env.SITE).href;
+const site = import.meta.env.SITE;
+const base = import.meta.env.BASE_URL;
 
 interface MetaProps {
   title: string;
   description: string;
   keywords: string;
   author: string;
-  canonical: string;
+  siteName: string;
   image: string;
   imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
+  imageType: string;
+  locale: string;
 }
 
 export const meta: MetaProps = {
@@ -17,7 +22,11 @@ export const meta: MetaProps = {
   keywords:
     "Bryan Espinoza, 14BryanEspinoza, portafolio web, desarrollador frontend, frontend developer, desarrollo web, Astro, TypeScript, JavaScript, Tailwind CSS, UI/UX, responsive design, desarrollador web Nicaragua",
   author: "14BryanEspinoza",
-  image: "https://14bryanespinoza.github.io/portfolio-web/preview.png",
-  imageAlt: "Preview del proyecto Portfolio Web",
-  canonical,
+  siteName: "Bryan Espinoza - Frontend Developer",
+  image: new URL(`${base}og-image.png`, site).href,
+  imageAlt: "Vista previa del portafolio de Bryan Espinoza",
+  imageWidth: 1200,
+  imageHeight: 630,
+  imageType: "image/png",
+  locale: "es_NI",
 };

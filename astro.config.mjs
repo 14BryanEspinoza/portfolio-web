@@ -12,8 +12,6 @@ export default defineConfig({
 
   integrations: [icon(), sitemap()],
 
-  prefetch: true,
-
   site: "https://14bryanespinoza.github.io/portfolio-web/",
   base: "/portfolio-web/",
   build: { assets: "assets" },

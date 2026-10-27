@@ -126,5 +126,9 @@ import Link from "@components/Link.astro";
     });
   };
 
-  document.addEventListener("astro:page-load", setupNavbar);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupNavbar, { once: true });
+  } else {
+    setupNavbar();
+  }
 </script>
