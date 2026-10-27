@@ -4,11 +4,11 @@ import { Icon } from "astro-icon/components";
 import Link from "./Link.astro";
 ---
 
-<div class="rounded-2xl border border-gray-muted bg-black-deep p-8 transition-colors duration-200 hover:border-gray-slate lg:col-start-2 lg:row-start-1">
-  <h4 class="mb-4 flex items-center gap-3 font-bold text-gray-light">
+<div class="rounded-2xl border border-gray-muted bg-black-deep p-8 transition-colors duration-200 hover:border-gray-slate md:col-span-2">
+  <h3 class="mb-4 flex items-center gap-3 font-bold text-gray-light">
     <Icon name="lucide:info" class="text-xl text-blue-ocean" />
     Información Rápida
-  </h4>
+  </h3>
 
   <div class="md:grid md:grid-cols-2">
     <Badged
@@ -26,7 +26,7 @@ import Link from "./Link.astro";
     />
 
     <Badged
-      title="Ingles"
+      title="Inglés"
       description="Principiante (A2)"
       icon="lucide:globe"
       className="border-none"
@@ -34,20 +34,13 @@ import Link from "./Link.astro";
 
     <Badged
       title="Intereses"
-      description="Open Source"
+      description="Open Source · IA en Desarrollo"
       icon="lucide:github"
       className="border-none"
     />
 
-    <Badged
-      title="Intereses"
-      description="IA en Desarrollo"
-      icon="lucide:cpu"
-      className="border-none"
-    />
-
-    <div class="col-span-2 mt-4 rounded-2xl bg-linear-to-br from-indigo-vibrant to-indigo-soft p-4 text-gray-light">
-      <p class="mb-2 text-xs font-bold tracking-widest text-gray-blue uppercase">
+    <div class="col-span-2 mt-4 rounded-2xl bg-linear-to-br from-indigo-vibrant to-indigo-deep p-4 text-gray-light">
+      <p class="mb-2 text-xs font-bold tracking-widest text-gray-light uppercase">
         Estado Actual
       </p>
 

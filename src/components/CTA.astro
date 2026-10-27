@@ -1,5 +1,5 @@
 ---
-import { socialNetworks } from "@data/links";
+import { github, linkedin } from "@data/links";
 import Link from "@components/Link.astro";
 
 const styleBase =
@@ -12,7 +12,7 @@ const linkSecondary =
 
 <div class="mb-8 flex flex-wrap justify-center gap-2 md:gap-4 lg:mb-12 lg:gap-6">
   <Link
-    url={socialNetworks[0].url}
+    url={linkedin.url}
     label="LinkedIn"
     targ
     className={styleBase + linkPrimary}
@@ -20,7 +20,7 @@ const linkSecondary =
   />
 
   <Link
-    url={socialNetworks[1].url}
+    url={github.url}
     label="GitHub"
     targ
     className={styleBase + linkSecondary}

@@ -4,28 +4,39 @@ import type { HTMLAttributes } from "astro/types";
 interface Props {
   name: string;
   label: string;
-  type: HTMLAttributes<"input">["type"];
+  type?: HTMLAttributes<"input">["type"];
+  id?: string;
   placeholder?: string;
   element?: "input" | "textarea";
   autocomplete?: string;
+  required?: boolean;
+  maxlength?: number;
+  error?: string;
 }
 
 const styleInput =
-  "w-full px-4 py-3 rounded-xl bg-black-deep border border-gray-muted text-gray-light outline-none placeholder:text-gray-slate transition-colors duration-200 focus:border-indigo-vibrant";
+  "w-full px-4 py-3 rounded-xl bg-black-deep border border-gray-line text-gray-light outline-none placeholder:text-gray-slate transition-colors duration-200 focus:border-indigo-vibrant";
 
 const {
   label,
-  type,
+  type = "text",
   name,
+  id = name,
   placeholder,
   element = "input",
   autocomplete,
+  required = false,
+  maxlength,
+  error,
+  ...rest
 } = Astro.props;
+
+const describedBy = error ? `${id}-error` : undefined;
 ---
 
 <div>
   <label
-    for={name}
+    for={id}
     class="mb-2 block text-sm font-medium tracking-widest text-gray-light"
   >
     {label}
@@ -33,22 +44,36 @@ const {
 
   {element === "input" ? (
     <input
+      {...rest}
       type={type}
-      id={name}
+      id={id}
       name={name}
-      required
+      required={required}
+      maxlength={maxlength}
       autocomplete={autocomplete}
+      aria-invalid={error ? "true" : undefined}
+      aria-describedby={describedBy}
       class={styleInput}
       placeholder={placeholder}
     />
   ) : (
     <textarea
-      id={name}
+      {...rest}
+      id={id}
       name={name}
       rows="5"
-      required
+      required={required}
+      maxlength={maxlength}
+      aria-invalid={error ? "true" : undefined}
+      aria-describedby={describedBy}
       class={styleInput}
       placeholder={placeholder}
-    ></textarea>
+    />
+  )}
+
+  {error && (
+    <p id={describedBy} class="mt-2 text-xs text-red-400">
+      {error}
+    </p>
   )}
 </div>

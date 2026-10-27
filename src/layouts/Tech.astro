@@ -7,9 +7,21 @@ import {
   techTools,
   techBackend,
   techDatabase,
-  techTest,
+  techQuality,
   techIA,
 } from "@data/tech.ts";
+
+const groups = [
+  { title: "Frontend", icon: "lucide:layout-dashboard", items: techFrontend },
+  { title: "Herramientas", icon: "lucide:wrench", items: techTools },
+  { title: "Backend", icon: "lucide:server", items: techBackend },
+  { title: "Database", icon: "lucide:database", items: techDatabase },
+  { title: "Calidad", icon: "lucide:check-check", items: techQuality },
+  { title: "IA", icon: "lucide:brain", items: techIA },
+];
+
+const gridStyle =
+  "grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2";
 ---
 
 <section id="stack" class="bg-black-deep py-20 md:py-24">
@@ -22,65 +34,17 @@ import {
 
   <div class="container mx-auto px-4 md:px-6">
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8">
-      <div>
-        <TitleTech title="Frontend" icon="lucide:layout-dashboard" />
+      {groups.map((group) => (
+        <div>
+          <TitleTech title={group.title} icon={group.icon} />
 
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
-          {techFrontend.map((tech) => (
-            <BadgedTech {...tech} />
-          ))}
+          <div class={gridStyle}>
+            {group.items.map((tech) => (
+              <BadgedTech {...tech} />
+            ))}
+          </div>
         </div>
-      </div>
-
-      <div>
-        <TitleTech title="Herramientas" icon="lucide:wrench" />
-
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
-          {techTools.map((tech) => (
-            <BadgedTech {...tech} />
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <TitleTech title="Backend" icon="lucide:server" />
-
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
-          {techBackend.map((tech) => (
-            <BadgedTech {...tech} />
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <TitleTech title="Database" icon="lucide:database" />
-
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
-          {techDatabase.map((tech) => (
-            <BadgedTech {...tech} />
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <TitleTech title="Test" icon="lucide:check-check" />
-
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
-          {techTest.map((tech) => (
-            <BadgedTech {...tech} />
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <TitleTech title="IA" icon="lucide:brain" />
-
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
-          {techIA.map((tech) => (
-            <BadgedTech {...tech} />
-          ))}
-        </div>
-      </div>
+      ))}
     </div>
   </div>
 </section>

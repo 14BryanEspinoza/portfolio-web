@@ -1,10 +1,16 @@
 ---
-import { socialNetworks } from "@data/links";
+import { contactEmail, socialNetworks } from "@data/links";
 import ContainerText from "@components/ContainerText.astro";
 import Badged from "@components/Badged.astro";
 import Link from "@components/Link.astro";
 import Input from "@components/Input.astro";
 import Button from "@components/Button.astro";
+
+const formEndpoint = `https://formsubmit.co/${contactEmail}`;
+const returnUrl = new URL(
+  `${import.meta.env.BASE_URL}#contact`,
+  import.meta.env.SITE,
+).href;
 ---
 
 <section id="contact" class="bg-black-deep py-20 md:py-24">
@@ -18,13 +24,13 @@ import Button from "@components/Button.astro";
 
   <div class="grid px-4 sm:grid-cols-2 sm:gap-6 sm:px-6 md:mx-auto md:max-w-4xl md:px-0">
     <div class="mx-auto flex flex-col gap-2 md:w-full">
-      <h2 class="mb-2 text-center text-sm font-bold tracking-widest text-gray-light uppercase">
+      <h3 class="mb-2 text-center text-sm font-bold tracking-widest text-gray-light uppercase">
         Información de Contacto
-      </h2>
+      </h3>
 
       <Badged
         title="email"
-        description="14bryespinoza@gmail.com"
+        description={contactEmail}
         icon="simple-icons:gmail"
       />
 
@@ -36,9 +42,9 @@ import Button from "@components/Button.astro";
     </div>
 
     <div class="mx-auto flex flex-col gap-2 py-8 md:col-start-1 md:row-start-2">
-      <h2 class="mb-2 text-center text-sm font-bold tracking-widest text-gray-light uppercase">
+      <h3 class="mb-2 text-center text-sm font-bold tracking-widest text-gray-light uppercase">
         Mis Redes
-      </h2>
+      </h3>
 
       <div class="flex items-center justify-center gap-8">
         {socialNetworks.map((link) => (
@@ -46,7 +52,7 @@ import Button from "@components/Button.astro";
             url={link.url}
             ariaLabel={link.label}
             icon={link.icon}
-            targ
+            targ={!link.url.startsWith("mailto:")}
             className="text-gray-blue hover:border-gray-light hover:text-gray-light"
           />
         ))}
@@ -54,16 +60,35 @@ import Button from "@components/Button.astro";
     </div>
 
     <form
-      action="https://formsubmit.co/14bryespinoza@gmail.com"
+      id="contact-form"
+      action={formEndpoint}
       method="POST"
+      aria-label="Formulario de contacto"
       class="mx-auto grid w-full max-w-sm gap-6 rounded-2xl border border-gray-muted bg-black-dark p-6 sm:col-span-2 sm:gap-8 sm:p-8 md:col-start-2 md:row-span-2 md:row-start-1"
     >
+      <input type="hidden" name="_next" value={returnUrl} />
+      <input
+        type="hidden"
+        name="_subject"
+        value="Nuevo mensaje desde el portafolio"
+      />
+      <input
+        type="text"
+        name="_honey"
+        class="hidden"
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+      />
+
       <Input
         name="name"
         label="Nombre"
         type="text"
         placeholder="Tu nombre completo"
         autocomplete="name"
+        maxlength={100}
+        required
       />
 
       <Input
@@ -72,17 +97,45 @@ import Button from "@components/Button.astro";
         type="email"
         placeholder="tu@email.com"
         autocomplete="email"
+        maxlength={100}
+        required
       />
 
       <Input
         name="message"
         label="Mensaje"
-        type="text"
-        placeholder="Cuéntame sobre tu proyecto, plazos y objetivos"
         element="textarea"
+        placeholder="Cuéntame sobre tu proyecto, plazos y objetivos"
+        maxlength={1000}
+        required
       />
 
       <Button type="submit" label="Enviar Mensaje" icon="lucide:send" />
     </form>
   </div>
 </section>
+
+<script>
+  const setupContactForm = () => {
+    const form = document.querySelector<HTMLFormElement>("#contact-form");
+    if (!form || form.dataset.bound === "true") return;
+
+    const button = form.querySelector<HTMLButtonElement>(
+      "button[type='submit']",
+    );
+    if (!button) return;
+
+    form.dataset.bound = "true";
+
+    form.addEventListener("submit", () => {
+      button.disabled = true;
+      button.setAttribute("aria-busy", "true");
+
+      const label = button.querySelector<HTMLElement>("[data-label]");
+      if (label) label.textContent = "Enviando...";
+    });
+  };
+
+  document.addEventListener("astro:page-load", setupContactForm);
+  setupContactForm();
+</script>

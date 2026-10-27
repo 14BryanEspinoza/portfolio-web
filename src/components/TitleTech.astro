@@ -10,13 +10,13 @@ const { title, icon } = Astro.props;
 ---
 
 <div class="mb-5 flex items-center gap-3">
-  <div class="text-black-deep-600 flex size-8 items-center justify-center rounded-lg bg-gray-blue p-2">
+  <div class="flex size-8 items-center justify-center rounded-lg bg-gray-blue p-2 text-black-deep">
     <Icon name={icon} class="text-sm" />
   </div>
 
-  <h2 class="text-sm font-bold tracking-widest text-gray-light uppercase">
+  <h3 class="text-sm font-bold tracking-widest text-gray-light uppercase">
     {title}
-  </h2>
+  </h3>
 
   <div class="h-px flex-1 bg-gray-muted"></div>
 </div>

@@ -4,6 +4,8 @@ interface Props {
   level: "Principiante" | "Intermedio" | "Avanzado";
 }
 
+export const coreStack = ["Astro", "React", "TypeScript"];
+
 export const techTools: Props[] = [
   {
     label: "Git",
@@ -91,7 +93,7 @@ export const techDatabase: Props[] = [
   },
 ];
 
-export const techTest: Props[] = [
+export const techQuality: Props[] = [
   {
     label: "ESLint",
     icon: "simple-icons:eslint",
@@ -107,7 +109,7 @@ export const techTest: Props[] = [
 export const techIA: Props[] = [
   {
     label: "Antigravity",
-    icon: "simple-icons:googlegemini",
+    icon: "lucide:bot",
     level: "Intermedio",
   },
   {

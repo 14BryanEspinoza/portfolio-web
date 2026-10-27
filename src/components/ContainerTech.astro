@@ -1,6 +1,14 @@
 ---
+import { coreStack } from "@data/tech.ts";
 ---
 
 <section class="mb-8 w-full border-t border-b border-gray-muted py-4 text-center text-sm tracking-wide text-gray-slate">
-  <p>Astro | React | TypeScript</p>
+  <p>
+    {coreStack.map((tech, index) => (
+      <>
+        {index > 0 && <span aria-hidden="true"> | </span>}
+        {tech}
+      </>
+    ))}
+  </p>
 </section>
