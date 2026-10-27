@@ -12,8 +12,7 @@ interface Props {
   className?: string;
 }
 
-const baseStyle =
-  "flex gap-2 text-sm transition-all duration-200 hover:scale-105 active:scale-95";
+const baseStyle = "flex gap-2 text-sm transition-colors duration-200";
 const skipStyle =
   "sr-only bg-indigo-vibrant transition focus:not-sr-only focus:absolute focus:top-5 focus:left-6 focus:z-50 focus:px-6 focus:py-2 focus:rounded-md focus:font-bold focus:text-gray-light";
 
@@ -31,13 +30,12 @@ const {
 
 <a
   href={url}
-  target={targ ? "_blank" : ""}
-  rel={targ ? "noopener noreferrer" : ""}
+  target={targ ? "_blank" : undefined}
+  rel={targ ? "noopener noreferrer" : undefined}
   download={download}
   aria-label={ariaLabel || undefined}
-  title={ariaLabel || undefined}
   class={`${skip ? skipStyle : baseStyle} ${className}`}
 >
-  {icon && <Icon name={icon} class="text-lg" />}
+  {icon && <Icon name={icon} class="text-lg" aria-hidden="true" />}
   {label}
 </a>

@@ -18,7 +18,7 @@ import ContainerTech from "@components/ContainerTech.astro";
           url={link.url}
           ariaLabel={link.label}
           icon={link.icon}
-          targ
+          targ={!link.url.startsWith("mailto:")}
           className="rounded-full border border-gray-muted p-4 text-gray-blue hover:border-gray-light hover:text-gray-light"
         />
       ))}

@@ -57,3 +57,14 @@ export const socialNetworks: LinksProps[] = [
     icon: "simple-icons:gmail",
   },
 ];
+
+const findSocial = (label: string): LinksProps => {
+  const network = socialNetworks.find((item) => item.label === label);
+
+  if (!network) throw new Error(`Missing social network: ${label}`);
+
+  return network;
+};
+
+export const linkedin = findSocial("LinkedIn");
+export const github = findSocial("GitHub");

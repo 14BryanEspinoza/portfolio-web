@@ -24,7 +24,8 @@ const { title, description, topic, image, imageAlt, url } = Astro.props;
     <Picture
       src={image}
       alt={imageAlt}
-      width={400}
+      widths={[400, 800]}
+      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
       formats={["avif", "webp"]}
       loading="lazy"
       decoding="async"

@@ -52,7 +52,7 @@ const returnUrl = new URL(
             url={link.url}
             ariaLabel={link.label}
             icon={link.icon}
-            targ
+            targ={!link.url.startsWith("mailto:")}
             className="text-gray-blue hover:border-gray-light hover:text-gray-light"
           />
         ))}
@@ -87,6 +87,8 @@ const returnUrl = new URL(
         type="text"
         placeholder="Tu nombre completo"
         autocomplete="name"
+        maxlength={100}
+        required
       />
 
       <Input
@@ -95,14 +97,17 @@ const returnUrl = new URL(
         type="email"
         placeholder="tu@email.com"
         autocomplete="email"
+        maxlength={100}
+        required
       />
 
       <Input
         name="message"
         label="Mensaje"
-        type="text"
-        placeholder="Cuéntame sobre tu proyecto, plazos y objetivos"
         element="textarea"
+        placeholder="Cuéntame sobre tu proyecto, plazos y objetivos"
+        maxlength={1000}
+        required
       />
 
       <Button type="submit" label="Enviar Mensaje" icon="lucide:send" />
