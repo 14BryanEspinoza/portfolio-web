@@ -7,7 +7,7 @@ import Card from "@components/Card.astro";
 const projects = await getCollection("projects");
 ---
 
-<section id="proyectos" class="bg-black-deep py-20 md:py-24">
+<section id="projects" class="bg-black-deep py-20 md:py-24">
   <ContainerText
     title="Proyectos Destacados"
     subtitle="Portafolio"
@@ -15,7 +15,7 @@ const projects = await getCollection("projects");
     classNameDiv="text-center"
   />
 
-  <div class="mx-4 grid gap-4 sm:grid-cols-2 lg:mx-auto lg:max-w-7xl lg:grid-cols-3 lg:gap-8">
+  <div class="grid gap-4 px-4 sm:grid-cols-2 sm:px-6 lg:mx-auto lg:max-w-7xl lg:grid-cols-3 lg:gap-8 lg:px-12">
     {projects.map((project) => (
       <Card {...project.data} />
     ))}

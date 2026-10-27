@@ -37,10 +37,13 @@ import Link from "@components/Link.astro";
 
 <nav
   id="nav-main"
-  class="hidden h-[90dvh] w-full flex-col items-center justify-center bg-black-deep/95 backdrop-blur-xl lg:flex lg:h-auto lg:w-auto lg:bg-transparent lg:backdrop-blur-none"
+  class="hidden h-[calc(100dvh-4.25rem)] w-full flex-col items-center overflow-y-auto bg-black-deep/95 px-6 py-6 backdrop-blur-xl lg:flex lg:h-auto lg:w-auto lg:overflow-visible lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none"
   aria-label="navegación principal"
 >
-  <ul role="list" class="flex flex-col items-center lg:flex-row lg:gap-8">
+  <ul
+    role="list"
+    class="my-auto flex flex-col items-center lg:flex-row lg:gap-8"
+  >
     {linkNavbar.map((link) => {
       return (
         <li>
@@ -54,7 +57,7 @@ import Link from "@components/Link.astro";
 
     <li class="mt-8 border-t-2 border-gray-muted pt-8 lg:mt-0 lg:border-t-0 lg:border-l-2 lg:pt-0 lg:pl-8">
       <Link
-        url=""
+        url={import.meta.env.BASE_URL + "bryan-espinoza-cv.pdf"}
         label="Descargar CV"
         icon="lucide:download"
         download
@@ -74,8 +77,21 @@ import Link from "@components/Link.astro";
 
     const btn = document.getElementById("menu-toggle");
     const nav = document.getElementById("nav-main");
+    const main = document.getElementById("main-content");
+    const footer = document.querySelector("footer");
 
     let open = false;
+
+    const focusables = () =>
+      Array.from(nav?.querySelectorAll<HTMLAnchorElement>("a[href]") ?? []);
+
+    const setBackgroundInert = (inert: boolean) => {
+      for (const node of [main, footer]) {
+        if (!node) continue;
+        if (inert) node.setAttribute("inert", "");
+        else node.removeAttribute("inert");
+      }
+    };
 
     const setOpen = (next: boolean) => {
       open = next;
@@ -84,6 +100,11 @@ import Link from "@components/Link.astro";
 
       nav?.classList.toggle("hidden", !open);
       nav?.classList.toggle("flex", open);
+
+      document.body.style.overflow = open ? "hidden" : "";
+      setBackgroundInert(open);
+
+      if (open) focusables()[0]?.focus();
     };
 
     btn?.addEventListener("click", () => setOpen(!open), { signal });
@@ -91,38 +112,78 @@ import Link from "@components/Link.astro";
     document.addEventListener(
       "keydown",
       (event) => {
-        if (event.key === "Escape" && open) {
+        if (!open) return;
+
+        if (event.key === "Escape") {
           setOpen(false);
           btn?.focus();
+          return;
+        }
+
+        if (event.key !== "Tab") return;
+
+        const items = focusables();
+        if (items.length === 0) return;
+
+        const first = items[0];
+        const last = items[items.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
         }
       },
       { signal },
     );
-    nav?.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => setOpen(false), { signal });
 
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    nav?.querySelectorAll("a").forEach((link) => {
       link.addEventListener(
         "click",
-        (e) => {
+        (event) => {
           setOpen(false);
 
           const href = link.getAttribute("href");
-          if (href && href.includes("#")) {
-            const hash = href.split("#")[1];
-            const target = document.getElementById(hash);
+          if (!href?.includes("#")) return;
 
-            if (target && "startViewTransition" in document) {
-              e.preventDefault();
+          const hash = href.split("#")[1];
+          const target = document.getElementById(hash);
 
-              document.startViewTransition(() => {
-                target.scrollIntoView({ behavior: "instant" });
-                history.pushState(null, "", `#${hash}`);
-              });
+          if (!target) return;
+
+          const moveFocus = () => {
+            if (!target.hasAttribute("tabindex")) {
+              target.setAttribute("tabindex", "-1");
             }
+            target.focus({ preventScroll: true });
+          };
+
+          if (reduceMotion || !("startViewTransition" in document)) {
+            moveFocus();
+            return;
           }
+
+          event.preventDefault();
+
+          document.startViewTransition(() => {
+            target.scrollIntoView({ behavior: "instant" });
+            history.pushState(null, "", `#${hash}`);
+          });
+          moveFocus();
         },
         { signal },
       );
+    });
+
+    signal.addEventListener("abort", () => {
+      document.body.style.overflow = "";
+      setBackgroundInert(false);
     });
   };
 

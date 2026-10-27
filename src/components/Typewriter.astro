@@ -6,14 +6,17 @@
 
 <style>
   .typewriter {
+    --chars: 14;
+    --tracking: 0.25em;
+
     display: inline-block;
     overflow: hidden;
     border-right: 2px solid var(--color-gray-slate);
     white-space: nowrap;
-    letter-spacing: 0.25em;
+    letter-spacing: var(--tracking);
     width: 0;
     animation:
-      typing 3s steps(20, end) forwards,
+      typing 3s steps(var(--chars), end) forwards,
       blink 0.8s step-end infinite;
   }
 
@@ -22,7 +25,7 @@
       width: 0;
     }
     to {
-      width: 50%;
+      width: calc(var(--chars) * 1ch + var(--chars) * var(--tracking) + 2px);
     }
   }
 

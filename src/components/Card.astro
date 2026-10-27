@@ -49,6 +49,7 @@ const { title, description, topic, image, imageAlt, url } = Astro.props;
       <Link
         url={url.demo}
         label="Demo"
+        ariaLabel={`Ver demo de ${title}`}
         icon="lucide:link"
         targ
         className="inline-flex h-full flex-1 items-center justify-center gap-2 rounded-xl bg-indigo-vibrant py-3 text-gray-light transition-all duration-200 hover:bg-indigo-deep hover:shadow-md hover:shadow-indigo-vibrant/20"
@@ -56,6 +57,7 @@ const { title, description, topic, image, imageAlt, url } = Astro.props;
 
       <Link
         url={url.repo}
+        ariaLabel={`Repositorio de ${title}`}
         icon="simple-icons:github"
         targ
         className="flex items-center justify-center rounded-xl bg-black-deep p-4 text-gray-light transition-colors duration-200 hover:bg-gray-muted"
