@@ -4,15 +4,15 @@ import { z } from "astro/zod";
 
 const projectsSchema = ({ image }: { image: ImageFunction }) =>
   z.object({
-    id: z.string(),
+    order: z.number().int().positive(),
     title: z.string(),
     description: z.string(),
     image: image(),
     imageAlt: z.string(),
     topic: z.array(z.string()),
     url: z.object({
-      demo: z.string(),
-      repo: z.string(),
+      demo: z.url(),
+      repo: z.url(),
     }),
   });
 

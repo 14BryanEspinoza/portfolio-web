@@ -1,6 +1,7 @@
 ---
 import BadgedCard from "@components/BadgedCard.astro";
 import ContainerText from "@components/ContainerText.astro";
+import { timeline } from "@data/timeline";
 ---
 
 <section class="bg-black-dark py-20 md:py-24">
@@ -16,41 +17,15 @@ import ContainerText from "@components/ContainerText.astro";
       <div class="absolute top-0 bottom-0 left-4 w-0.5 bg-gray-muted md:left-1/2 md:-translate-x-1/2"></div>
 
       <div class="space-y-12">
-        <BadgedCard
-          title="Inicio de mi Carrera Universitaria"
-          contentSide="left"
-          date="2020"
-          description="Comencé mi formación profesional en la carrera de Ingeniería en Sistemas, sentando las bases teóricas de la computación."
-        />
-
-        <BadgedCard
-          title="Desarrollo Web Frontend"
-          contentSide="right"
-          date="2022"
-          description="Inicié mi camino autodidacta en el desarrollo web, especializándome en tecnologías como Astro, React y TypeScript para crear interfaces interactivas."
-        />
-
-        <BadgedCard
-          title="Mentors International"
-          contentSide="left"
-          date="2024"
-          description="Completé con éxito el programa de formación intensiva, fortaleciendo mis habilidades técnicas y blandas en un entorno profesional."
-          url={import.meta.env.BASE_URL + "mentors.pdf"}
-        />
-
-        <BadgedCard
-          title="Finalización de Carrera"
-          contentSide="right"
-          date="2026"
-          description="Culminación de mi carrera profesional, obteniendo el título de Ingeniero en Sistemas."
-        />
-
-        <BadgedCard
-          title="Próximo paso: camino Full-Stack"
-          contentSide="left"
-          date="2027"
-          description="Plan en preparación para ampliar mi formación en desarrollo Backend y Database, explorando nuevas tecnologías y arquitecturas con el objetivo de consolidarme como desarrollador Full-Stack."
-        />
+        {timeline.map((entry) => (
+          <BadgedCard
+            title={entry.title}
+            date={entry.date}
+            description={entry.description}
+            contentSide={entry.contentSide}
+            url={entry.url}
+          />
+        ))}
       </div>
     </div>
   </div>
