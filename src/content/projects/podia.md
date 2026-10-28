@@ -4,7 +4,7 @@ title: "Podia"
 description: "Recreación del challenge Podia de Frontend Practice con Astro, Tailwind CSS v4 y TypeScript, con foco en performance: imágenes AVIF/WebP, cero fuentes externas y SEO técnico. "
 image: "../../assets/podia.png"
 imageAlt: "Preview de Podia"
-topic: ["Astro", "TailwindCSS", "Typescript"]
+topic: ["Astro", "TailwindCSS", "TypeScript"]
 url:
   {
     demo: "https://14bryanespinoza.github.io/podia/",

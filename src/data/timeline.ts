@@ -38,7 +38,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     title: "Próximo paso: camino Full-Stack",
-    date: "2027",
+    date: "2027 · Plan",
     description:
       "Plan en preparación para ampliar mi formación en desarrollo Backend y Database, explorando nuevas tecnologías y arquitecturas con el objetivo de consolidarme como desarrollador Full-Stack.",
     contentSide: "left",

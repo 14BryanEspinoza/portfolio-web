@@ -2,6 +2,12 @@
 import { github, linkedin } from "@data/links";
 import Link from "@components/Link.astro";
 
+interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props;
+
 const styleBase =
   "items-center px-6 py-3 font-semibold rounded-xl transition-all duration-200 hover:shadow-md active:scale-95";
 const linkPrimary =
@@ -10,7 +16,9 @@ const linkSecondary =
   " bg-gray-light text-blue-dark hover:bg-white hover:shadow-gray-light/20";
 ---
 
-<div class="mb-8 flex flex-wrap justify-center gap-2 md:gap-4 lg:mb-12 lg:gap-6">
+<div
+  class={`mb-8 flex flex-wrap justify-center gap-2 md:gap-4 lg:mb-12 lg:gap-6 ${className}`}
+>
   <Link
     url={linkedin.url}
     label="LinkedIn"

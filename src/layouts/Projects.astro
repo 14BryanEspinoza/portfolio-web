@@ -7,18 +7,22 @@ import Card from "@components/Card.astro";
 
 const projects = await getCollection("projects");
 const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
+const featuredProject = sortedProjects.at(0);
+const otherProjects = sortedProjects.slice(1);
 ---
 
 <Section id="projects" width="wide">
   <ContainerText
-    title="Proyectos Destacados"
+    title="Proyectos destacados"
     subtitle="Portafolio"
     description="Selección de desafíos y proyectos web desarrollados con foco en rendimiento, accesibilidad y diseño interactivo."
     classNameDiv="text-center"
   />
 
   <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-    {sortedProjects.map((project) => (
+    {featuredProject && <Card {...featuredProject.data} featured />}
+
+    {otherProjects.map((project) => (
       <Card {...project.data} />
     ))}
   </div>
