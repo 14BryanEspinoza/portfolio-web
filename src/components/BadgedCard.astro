@@ -12,22 +12,22 @@ interface Props {
 const { title, date, description, contentSide, url } = Astro.props;
 ---
 
-<div class="relative flex flex-col gap-8 md:flex-row md:gap-0">
+<div class="relative flex flex-col gap-8 pl-10 md:flex-row md:gap-0 md:pl-0">
   {contentSide === "right" && <div class="hidden md:block md:w-1/2"></div>}
 
   <div
     class=`md:w-1/2 ${contentSide === "left" ? "md:pr-12 md:text-right" : "md:pl-12 md:text-left"}`
   >
-    <div class="rounded-2xl border border-gray-muted bg-black-deep/80 px-8 py-6">
+    <div class="rounded-2xl border border-gray-muted bg-black-deep/80 px-5 py-5 sm:px-8 sm:py-6">
       <span class="mb-4 inline-block rounded-full bg-blue-ocean px-3 py-1 text-xs font-bold text-gray-light">
         {date}
       </span>
 
-      <h3 class="mb-4 font-bold tracking-widest text-balance text-gray-light">
+      <h3 class="mb-3 text-lg font-bold tracking-tight text-balance text-gray-light">
         {title}
       </h3>
 
-      <p class="text-sm leading-relaxed text-balance text-gray-slate">
+      <p class="text-sm leading-relaxed text-pretty text-gray-slate sm:text-base">
         {description}
       </p>
 
@@ -47,7 +47,7 @@ const { title, date, description, contentSide, url } = Astro.props;
     </div>
   </div>
 
-  <div class="absolute top-6 left-4 z-10 hidden size-4 rounded-full border-4 border-gray-muted bg-indigo-vibrant md:left-1/2 md:block md:-translate-x-1/2"></div>
+  <div class="absolute top-6 left-5 z-10 size-4 -translate-x-1/2 rounded-full border-4 border-gray-muted bg-indigo-vibrant md:left-1/2"></div>
 
   {contentSide === "left" && <div class="hidden md:block md:w-1/2"></div>}
 </div>

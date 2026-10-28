@@ -143,6 +143,16 @@ import Link from "@components/Link.astro";
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
+    const desktopQuery = window.matchMedia("(min-width: 1024px)");
+
+    desktopQuery.addEventListener(
+      "change",
+      (event: MediaQueryListEvent) => {
+        if (event.matches && open) setOpen(false);
+      },
+      { signal },
+    );
+
     nav?.querySelectorAll("a").forEach((link) => {
       link.addEventListener(
         "click",
