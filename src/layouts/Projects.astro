@@ -19,7 +19,7 @@ const otherProjects = sortedProjects.slice(1);
     classNameDiv="text-center"
   />
 
-  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+  <div class="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-8">
     {featuredProject && <Card {...featuredProject.data} featured />}
 
     {otherProjects.map((project) => (
