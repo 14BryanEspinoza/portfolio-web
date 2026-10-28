@@ -1,6 +1,7 @@
 ---
 import { contactEmail, socialNetworks } from "@data/links";
 import ContainerText from "@components/ContainerText.astro";
+import Section from "@components/Section.astro";
 import Badged from "@components/Badged.astro";
 import Link from "@components/Link.astro";
 import Input from "@components/Input.astro";
@@ -8,12 +9,12 @@ import Button from "@components/Button.astro";
 
 const formEndpoint = `https://formsubmit.co/${contactEmail}`;
 const returnUrl = new URL(
-  `${import.meta.env.BASE_URL}#contact`,
+  `${import.meta.env.BASE_URL}?sent=1#contact`,
   import.meta.env.SITE,
 ).href;
 ---
 
-<section id="contact" class="bg-black-deep py-14 sm:py-20 lg:py-28">
+<Section id="contact" width="narrow">
   <ContainerText
     title="¿Tienes un Proyecto en Mente?"
     subtitle="Contacto"
@@ -22,7 +23,7 @@ const returnUrl = new URL(
     classNameDiv="text-center"
   />
 
-  <div class="grid px-5 sm:grid-cols-2 sm:gap-6 sm:px-8 md:mx-auto md:max-w-4xl md:px-0">
+  <div class="grid sm:grid-cols-2 sm:gap-6">
     <div class="mx-auto flex flex-col gap-2 md:w-full">
       <h3 class="mb-2 text-center text-sm font-bold tracking-widest text-gray-light uppercase">
         Información de Contacto
@@ -66,6 +67,14 @@ const returnUrl = new URL(
       aria-label="Formulario de contacto"
       class="mx-auto grid w-full max-w-sm gap-6 rounded-2xl border border-gray-muted bg-black-dark p-6 sm:col-span-2 sm:gap-8 sm:p-8 md:col-start-2 md:row-span-2 md:row-start-1"
     >
+      <p
+        id="form-status"
+        role="status"
+        aria-live="polite"
+        class="hidden rounded-xl border border-emerald-400/40 bg-emerald-400/10 px-4 py-3 text-center text-sm text-emerald-200"
+      >
+        Gracias, tu mensaje se envió correctamente. Te respondo a la brevedad.
+      </p>
       <input type="hidden" name="_next" value={returnUrl} />
       <input
         type="hidden"
@@ -113,27 +122,61 @@ const returnUrl = new URL(
       <Button type="submit" label="Enviar Mensaje" icon="lucide:send" />
     </form>
   </div>
-</section>
+</Section>
 
 <script>
   const setupContactForm = () => {
     const form = document.querySelector<HTMLFormElement>("#contact-form");
-    if (!form || form.dataset.bound === "true") return;
+    if (!form) return;
 
     const button = form.querySelector<HTMLButtonElement>(
       "button[type='submit']",
     );
-    if (!button) return;
+    const label = button?.querySelector<HTMLElement>("[data-label]");
 
-    form.dataset.bound = "true";
+    if (button && label && !button.dataset.idleLabel) {
+      button.dataset.idleLabel = label.textContent ?? "";
+    }
 
-    form.addEventListener("submit", () => {
-      button.disabled = true;
-      button.setAttribute("aria-busy", "true");
+    const resetButton = () => {
+      if (!button) return;
+      button.disabled = false;
+      button.removeAttribute("aria-busy");
+      if (label && button.dataset.idleLabel) {
+        label.textContent = button.dataset.idleLabel;
+      }
+    };
 
-      const label = button.querySelector<HTMLElement>("[data-label]");
-      if (label) label.textContent = "Enviando...";
-    });
+    if (form.dataset.bound !== "true") {
+      form.dataset.bound = "true";
+
+      form.addEventListener("submit", () => {
+        if (!button) return;
+        button.disabled = true;
+        button.setAttribute("aria-busy", "true");
+        if (label) label.textContent = "Enviando...";
+      });
+
+      window.addEventListener("pageshow", (event) => {
+        if (event.persisted) resetButton();
+      });
+    }
+
+    const status = document.getElementById("form-status");
+    if (!status) return;
+
+    const url = new URL(window.location.href);
+    if (url.searchParams.get("sent") !== "1") return;
+
+    url.searchParams.delete("sent");
+    history.replaceState(
+      history.state,
+      "",
+      `${url.pathname}${url.search}${url.hash}`,
+    );
+
+    status.classList.remove("hidden");
+    status.scrollIntoView({ block: "center" });
   };
 
   document.addEventListener("astro:page-load", setupContactForm);

@@ -27,6 +27,9 @@
 @theme {
   --font-default: "JetBrains Mono", monospace;
   --font-mono: "JetBrains Mono", monospace;
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 
   --text-display: clamp(1.75rem, 6vw, 3rem);
   --text-display--line-height: 1.1;
@@ -47,6 +50,7 @@
 
   --color-blue-light: #c0caf5;
   --color-blue-ocean: #006ea8;
+  --color-blue-ocean-deep: #005a8a;
   --color-blue-dark: #020617;
 
   --color-indigo-vibrant: #4f46e5;
@@ -54,11 +58,12 @@
   --color-indigo-soft: #818cf8;
 
   --color-level-beginner: #565f89;
-  --color-level-intermediate: #006ea8;
+  --color-level-intermediate: #005a8a;
   --color-level-advanced: #4f46e5;
 }
 
 html {
+  scroll-padding-top: 5rem;
   color-scheme: dark;
   scroll-behavior: smooth;
   scrollbar-width: thin;

@@ -1,5 +1,6 @@
 ---
 import ContainerText from "@components/ContainerText.astro";
+import Section from "@components/Section.astro";
 import TitleTech from "@components/TitleTech.astro";
 import BadgedTech from "@components/BadgedTech.astro";
 import {
@@ -24,7 +25,7 @@ const gridStyle =
   "grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2";
 ---
 
-<section id="stack" class="bg-black-deep py-14 sm:py-20 lg:py-28">
+<Section id="stack" width="wide">
   <ContainerText
     title="Mi Tech Stack"
     subtitle="Habilidades"
@@ -32,19 +33,17 @@ const gridStyle =
     classNameDiv="text-center"
   />
 
-  <div class="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8">
-      {groups.map((group) => (
-        <div>
-          <TitleTech title={group.title} icon={group.icon} />
+  <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8">
+    {groups.map((group) => (
+      <div>
+        <TitleTech title={group.title} icon={group.icon} />
 
-          <div class={gridStyle}>
-            {group.items.map((tech) => (
-              <BadgedTech {...tech} />
-            ))}
-          </div>
+        <div class={gridStyle}>
+          {group.items.map((tech) => (
+            <BadgedTech {...tech} />
+          ))}
         </div>
-      ))}
-    </div>
+      </div>
+    ))}
   </div>
-</section>
+</Section>

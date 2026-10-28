@@ -12,7 +12,7 @@ const styleHeading = "text-heading font-bold text-balance text-gray-light";
 const styleSubtitle =
   "text-xs font-bold font-mono uppercase tracking-[0.12em] text-indigo-soft";
 const styleBody =
-  "mx-auto max-w-[68ch] text-base leading-relaxed text-pretty text-gray-blue lg:text-lg";
+  "mx-auto max-w-[68ch] font-sans text-base leading-relaxed text-pretty text-gray-blue lg:text-lg";
 
 const {
   title,
@@ -24,7 +24,7 @@ const {
 ---
 
 <div
-  class=`mx-auto flex max-w-3xl flex-col gap-3 px-5 mb-10 sm:gap-4 sm:px-8 md:mb-14 lg:px-12 ${classNameDiv}`
+  class=`mx-auto flex max-w-3xl flex-col gap-3 mb-10 sm:gap-4 md:mb-14 ${classNameDiv}`
 >
   {subtitle && <p class={styleSubtitle}>{subtitle}</p>}
 

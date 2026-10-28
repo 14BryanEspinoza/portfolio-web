@@ -2,13 +2,14 @@
 import { getCollection } from "astro:content";
 
 import ContainerText from "@components/ContainerText.astro";
+import Section from "@components/Section.astro";
 import Card from "@components/Card.astro";
 
 const projects = await getCollection("projects");
 const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
 ---
 
-<section id="projects" class="bg-black-deep py-14 sm:py-20 lg:py-28">
+<Section id="projects" width="wide">
   <ContainerText
     title="Proyectos Destacados"
     subtitle="Portafolio"
@@ -16,9 +17,9 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
     classNameDiv="text-center"
   />
 
-  <div class="mx-auto grid max-w-6xl gap-4 px-5 sm:grid-cols-2 sm:px-8 lg:grid-cols-3 lg:gap-8 lg:px-12">
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
     {sortedProjects.map((project) => (
       <Card {...project.data} />
     ))}
   </div>
-</section>
+</Section>
