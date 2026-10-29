@@ -1,7 +1,7 @@
 ---
-order: 4
+order: 1
 title: "Nica Page"
-description: "Guía turística de Nicaragua: 47 entradas en Content Collections y 33 páginas SSG. El video pesa 0 KB hasta que se reproduce."
+description: "Guía turística de Nicaragua con cinco secciones de contenido modeladas con Content Collections y tipadas en TypeScript."
 image: "../../assets/nica-page.png"
 imageAlt: "Preview de Nica Page"
 topic: ["Astro", "TailwindCSS", "TypeScript", "Collections"]

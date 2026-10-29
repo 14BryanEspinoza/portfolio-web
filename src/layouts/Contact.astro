@@ -36,13 +36,13 @@ const returnUrl = new URL(
       />
 
       <Badged
-        title="ubicación"
-        description="Carazo, Nicaragua"
-        icon="simple-icons:googlemaps"
+        title="WathsApp"
+        description="+505 82693769"
+        icon="simple-icons:whatsapp"
       />
     </div>
 
-    <div class="mx-auto flex flex-col gap-3 md:col-start-1 md:row-start-2">
+    <div class="mx-auto my-8 flex flex-col gap-3 md:col-start-1 md:row-start-2">
       <h3 class="mb-2 text-center text-sm font-bold tracking-widest text-gray-light uppercase">
         Mis redes
       </h3>
@@ -67,6 +67,10 @@ const returnUrl = new URL(
       aria-label="Formulario de contacto"
       class="mx-auto grid w-full max-w-sm gap-5 rounded-2xl border border-gray-muted bg-black-dark p-6 sm:col-span-2 sm:gap-6 sm:p-8 md:col-start-2 md:row-span-2 md:row-start-1"
     >
+      <h3 class="mb-2 text-center text-sm font-bold tracking-widest text-gray-light uppercase">
+        Envíame un Correo
+      </h3>
+
       <p
         id="form-status"
         role="status"
@@ -75,12 +79,15 @@ const returnUrl = new URL(
       >
         Gracias, tu mensaje se envió correctamente. Te respondo a la brevedad.
       </p>
+
       <input type="hidden" name="_next" value={returnUrl} />
+
       <input
         type="hidden"
         name="_subject"
         value="Nuevo mensaje desde el portafolio"
       />
+
       <input
         type="text"
         name="_honey"

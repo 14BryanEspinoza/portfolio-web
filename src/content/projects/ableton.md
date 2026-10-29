@@ -1,7 +1,7 @@
 ---
-order: 1
+order: 4
 title: "Ableton"
-description: "Recreación del challenge Ableton en Astro y Tailwind v4. Contraste AA medido sobre los estados reales (8.6:1), menú móvil con patrón APG e imágenes AVIF/WebP con srcset de 359w a 1200w."
+description: "Recreación responsive del challenge de Frontend Practice, con optimización de assets y fuentes."
 image: "../../assets/ableton.png"
 imageAlt: "Preview de Ableton"
 topic: ["Astro", "TailwindCSS", "TypeScript"]
