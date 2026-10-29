@@ -1,7 +1,7 @@
 ---
 order: 1
 title: "Ableton"
-description: "Recreación del challenge Ableton de Frontend Practice con Astro, Tailwind CSS v4 y TypeScript: maquetación responsive, optimización de imágenes, assets y fuentes"
+description: "Recreación del challenge Ableton en Astro y Tailwind v4. Contraste AA medido sobre los estados reales (8.6:1), menú móvil con patrón APG e imágenes AVIF/WebP con srcset de 359w a 1200w."
 image: "../../assets/ableton.png"
 imageAlt: "Preview de Ableton"
 topic: ["Astro", "TailwindCSS", "TypeScript"]
