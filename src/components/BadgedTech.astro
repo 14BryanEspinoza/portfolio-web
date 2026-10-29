@@ -41,8 +41,10 @@ const currentStep = levelSteps[level];
       {[1, 2, 3].map((step) => (
         <span
           class:list={[
-            "size-1.5 rounded-full",
-            step <= currentStep ? levelColors[level] : "bg-gray-muted",
+            "size-2 rounded-full border",
+            step <= currentStep
+              ? `${levelColors[level]} border-transparent`
+              : "border-level-empty",
           ]}
         />
       ))}

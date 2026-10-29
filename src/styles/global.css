@@ -57,9 +57,13 @@
   --color-indigo-deep: #4338ca;
   --color-indigo-soft: #818cf8;
 
-  --color-level-beginner: #565f89;
-  --color-level-intermediate: #005a8a;
-  --color-level-advanced: #4f46e5;
+  /* All four clear 3:1 against black-dark (#0f172a) per WCAG 2.2 SC 1.4.11:
+     4.10, 4.03, 5.98 and 3.50. Empty dots are hollow, so level reads by shape
+     and count as well as by colour. */
+  --color-level-beginner: #6f7899;
+  --color-level-intermediate: #0b7fb8;
+  --color-level-advanced: #818cf8;
+  --color-level-empty: #656d8c;
 }
 
 html {
@@ -74,9 +78,10 @@ body {
   font-family: var(--font-default);
 }
 
+/* 5.98:1 on black-dark, 6.75:1 on black-deep. Keep 3:1+ per WCAG 2.2 SC 1.4.11. */
 :focus-visible {
   outline-offset: 2px;
-  outline: 2px solid var(--color-indigo-vibrant);
+  outline: 2px solid var(--color-indigo-soft);
 }
 
 @media (prefers-reduced-motion: reduce) {
