@@ -10,8 +10,8 @@ interface Props {
 import { meta } from "@metadata/meta";
 import { socialNetworks } from "@data/links";
 import JsonLd from "@components/JsonLd.astro";
-import Link from "@components/Link.astro";
 import Navbar from "@layouts/Navbar.astro";
+import Link from "@components/Link.astro";
 import "../styles/global.css";
 
 const {
@@ -103,7 +103,7 @@ const personJsonLd = {
   <body class="bg-black-deep">
     <Link url="#main-content" label="Saltar al contenido principal" skip />
 
-    <header class="sticky top-0 z-40 flex flex-wrap items-center justify-between border-b border-gray-muted/50 bg-black-deep/80 px-6 py-4 backdrop-blur-xl md:px-8 lg:px-12">
+    <header class="sticky top-0 z-40 flex flex-wrap items-center justify-between border-b border-gray-muted/70 bg-black-deep px-8 py-4 backdrop-blur-xl md:px-12 lg:px-16 lg:py-6">
       <Navbar />
     </header>
 
