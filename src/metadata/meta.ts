@@ -16,7 +16,7 @@ interface MetaProps {
 }
 
 export const meta: MetaProps = {
-  title: "Portfolio Web - Bryan Espinoza",
+  title: "Bryan Espinoza — Desarrollador Frontend",
   description:
     "Portafolio de Bryan Espinoza, Desarrollador Frontend. Descubre proyectos web modernos, rápidos y accesibles desarrollados con Astro, TypeScript y Tailwind CSS.",
   keywords:

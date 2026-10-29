@@ -7,13 +7,21 @@ interface Props {
   level: "Principiante" | "Intermedio" | "Avanzado";
 }
 
-const levelColors: Record<string, string> = {
+const levelSteps: Record<Props["level"], number> = {
+  Principiante: 1,
+  Intermedio: 2,
+  Avanzado: 3,
+};
+
+const levelColors: Record<Props["level"], string> = {
   Principiante: "bg-level-beginner",
   Intermedio: "bg-level-intermediate",
   Avanzado: "bg-level-advanced",
 };
 
 const { label, icon, level } = Astro.props;
+
+const currentStep = levelSteps[level];
 ---
 
 <div class="flex items-center gap-3 rounded-2xl border border-gray-muted bg-black-dark p-3 transition-colors duration-200 hover:border-gray-slate sm:gap-4 sm:p-3.5 lg:p-4">
@@ -21,20 +29,27 @@ const { label, icon, level } = Astro.props;
     <Icon name={icon} class="text-base text-gray-blue sm:text-lg" />
   </div>
 
-  <div class="min-w-0 flex-1">
-    <div class="flex items-center justify-between gap-2">
-      <span
-        class="truncate text-xs font-semibold tracking-wide text-gray-light sm:text-sm"
-        title={label}
-      >
-        {label}
-      </span>
+  <div class="flex min-w-0 flex-1 items-center justify-between gap-2">
+    <span
+      class="truncate text-xs font-semibold tracking-wide text-gray-light sm:text-sm"
+      title={label}
+    >
+      {label}
+    </span>
 
-      <span
-        class={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium text-gray-light sm:px-2.5 sm:py-1 sm:text-xs ${levelColors[level]}`}
-      >
-        {level}
-      </span>
-    </div>
+    <span class="flex shrink-0 items-center gap-1" aria-hidden="true">
+      {[1, 2, 3].map((step) => (
+        <span
+          class:list={[
+            "size-2 rounded-full border",
+            step <= currentStep
+              ? `${levelColors[level]} border-transparent`
+              : "border-level-empty",
+          ]}
+        />
+      ))}
+    </span>
+
+    <span class="sr-only">Nivel: {level}</span>
   </div>
 </div>

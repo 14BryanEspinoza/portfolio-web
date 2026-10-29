@@ -13,29 +13,29 @@ import Footer from "@layouts/Footer.astro";
 >
   <main
     id="main-content"
-    class="flex min-h-[calc(100vh-160px)] items-center justify-center bg-black-deep p-4 md:p-8"
+    class="flex min-h-[calc(100dvh-4.25rem)] items-center justify-center bg-black-deep px-5 py-16 sm:px-8 sm:py-20 lg:px-12"
   >
-    <section class="flex w-full max-w-2xl flex-col items-center rounded-md border border-gray-muted bg-black-dark p-8 text-center">
+    <section class="flex w-full max-w-2xl flex-col items-center rounded-2xl border border-gray-muted bg-black-dark p-6 text-center sm:p-8">
       <div class="relative z-10 my-6 flex w-full items-center justify-center py-6">
-        <div class="absolute h-24 w-40 -translate-x-2 translate-y-5 -rotate-3 rounded-xs bg-blue-ocean opacity-90"></div>
+        <div class="absolute h-24 w-40 -translate-x-2 translate-y-5 -rotate-3 rounded-lg bg-blue-ocean-deep opacity-90"></div>
         <h1 class="relative z-10 text-7xl font-black tracking-tight text-gray-light sm:text-9xl">
           404
         </h1>
       </div>
 
       <div class="relative z-10 max-w-md">
-        <h2 class="mb-3 text-2xl font-bold tracking-tight text-gray-light">
+        <h2 class="mb-3 text-heading font-bold text-gray-light">
           Página no encontrada
         </h2>
 
-        <p class="mb-8 leading-relaxed text-gray-slate">
+        <p class="mb-8 font-sans leading-relaxed text-gray-slate">
           Lo sentimos, la página que buscas no existe, ha sido eliminada o
           cambió de dirección.
         </p>
 
         <a
           href={import.meta.env.BASE_URL}
-          class="inline-flex items-center gap-2 rounded-md bg-indigo-vibrant px-6 py-3 text-sm font-semibold text-gray-light transition hover:scale-105 hover:bg-indigo-deep active:scale-95"
+          class="inline-flex items-center gap-2 rounded-xl bg-indigo-vibrant px-6 py-3 text-sm font-semibold text-gray-light transition hover:scale-105 hover:bg-indigo-deep active:scale-95"
         >
           <Icon name="lucide:home" class="size-5" />
           Volver al Inicio

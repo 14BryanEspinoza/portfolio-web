@@ -1,32 +1,31 @@
 ---
 import BadgedCard from "@components/BadgedCard.astro";
 import ContainerText from "@components/ContainerText.astro";
+import Section from "@components/Section.astro";
 import { timeline } from "@data/timeline";
 ---
 
-<section class="bg-black-dark py-20 md:py-24">
+<Section width="wide">
   <ContainerText
-    title="Experiencia y Formación"
+    title="Experiencia y formación"
     subtitle="Trayectoria"
     description="Mi camino en el mundo de la tecnología, desde mis inicios académicos hasta mi evolución como desarrollador."
     classNameDiv="text-center"
   />
 
-  <div class="container mx-auto px-4 md:px-6">
-    <div class="relative mx-auto max-w-4xl">
-      <div class="absolute top-0 bottom-0 left-4 w-0.5 bg-gray-muted md:left-1/2 md:-translate-x-1/2"></div>
+  <div class="relative mx-auto max-w-4xl">
+    <div class="absolute top-0 bottom-0 left-5 w-0.5 bg-gray-muted md:left-1/2 md:-translate-x-1/2"></div>
 
-      <div class="space-y-12">
-        {timeline.map((entry) => (
-          <BadgedCard
-            title={entry.title}
-            date={entry.date}
-            description={entry.description}
-            contentSide={entry.contentSide}
-            url={entry.url}
-          />
-        ))}
-      </div>
+    <div class="space-y-8 md:space-y-12">
+      {timeline.map((entry) => (
+        <BadgedCard
+          title={entry.title}
+          date={entry.date}
+          description={entry.description}
+          contentSide={entry.contentSide}
+          url={entry.url}
+        />
+      ))}
     </div>
   </div>
-</section>
+</Section>

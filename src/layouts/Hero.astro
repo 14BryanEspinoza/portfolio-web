@@ -6,28 +6,40 @@ import Typewriter from "@components/Typewriter.astro";
 import Bryan from "@assets/Bryan.jpeg";
 ---
 
-<section class="flex min-h-dvh w-full flex-col items-center justify-center bg-black-deep px-6 text-center">
-  <figure class="mb-6 size-36 overflow-hidden rounded-full ring-4 ring-indigo-vibrant/30 ring-offset-4 ring-offset-black-deep md:size-40 lg:size-44">
-    <Picture
-      src={Bryan}
-      alt="Desarrollador frontend Bryan Espinoza"
-      width={350}
-      height={350}
-      formats={["avif", "webp"]}
-      priority
-    />
-  </figure>
+<section class="relative isolate flex min-h-[calc(100dvh-4.25rem)] w-full flex-col items-center justify-center overflow-hidden bg-black-deep px-5 py-16 text-center sm:px-8 lg:px-12 lg:py-20">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+    <div class="absolute top-0 left-1/2 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-indigo-vibrant/25 blur-[110px] lg:top-1/4 lg:left-[72%]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,var(--color-gray-muted)_1px,transparent_0)] bg-[size:28px_28px] opacity-20"></div>
+  </div>
 
-  <ContainerText
-    title="Frontend Development / Performance & Accessibility / AI-Assisted Engineering"
-    heading
-  >
-    <span class="font-extrabold text-blue-light">Bryan Espinoza</span> —
-    interfaces rápidas y accesibles construidas con Astro, React y TypeScript,
-    con flujos de desarrollo potenciados por IA.
-  </ContainerText>
+  <div class="flex w-full max-w-6xl flex-col items-center gap-10 lg:flex-row lg:justify-between lg:gap-16">
+    <figure class="order-1 shrink-0 lg:order-2">
+      <div class="size-36 overflow-hidden rounded-full ring-4 ring-indigo-vibrant/30 ring-offset-4 ring-offset-black-deep sm:size-40 lg:size-64 xl:size-72">
+        <Picture
+          src={Bryan}
+          alt="Desarrollador frontend Bryan Espinoza"
+          width={640}
+          height={640}
+          formats={["avif", "webp"]}
+          priority
+          class="size-full object-cover"
+        />
+      </div>
+    </figure>
 
-  <CTA />
+    <div class="order-2 w-full lg:order-1 lg:max-w-xl">
+      <ContainerText
+        title="Bryan Espinoza"
+        subtitle="Desarrollador Frontend"
+        heading
+        classNameDiv="text-center lg:text-left"
+      >
+        Interfaces rápidas y accesibles con Astro y TypeScript, y un flujo de
+        trabajo potenciado por IA.
+      </ContainerText>
 
-  <Typewriter />
+      <CTA className="lg:justify-start" />
+      <Typewriter className="lg:mx-0" />
+    </div>
+  </div>
 </section>

@@ -1,24 +1,25 @@
 ---
 import ContainerText from "@components/ContainerText.astro";
+import Section from "@components/Section.astro";
 import Motivation from "@components/Motivation.astro";
 import Goals from "@components/Goals.astro";
 import Info from "@components/Info.astro";
 ---
 
-<section id="about" class="bg-black-dark py-20 md:py-24">
+<Section id="about" width="narrow">
   <ContainerText
-    title="Conoce mi Historia"
-    subtitle="Sobre Mí"
+    title="Conoce mi historia"
+    subtitle="Sobre mí"
     description="Un poco más sobre quién soy, qué me impulsa y hacia dónde voy en el
         mundo del desarrollo."
     classNameDiv="text-center"
   />
 
-  <div class="mx-auto grid max-w-4xl gap-6 px-6 md:grid-cols-2 md:px-8 lg:px-12">
+  <div class="grid gap-4 sm:gap-6 md:grid-cols-2">
     <Motivation />
 
     <Goals />
 
     <Info />
   </div>
-</section>
+</Section>

@@ -14,18 +14,41 @@ interface Props {
     demo: string;
     repo: string;
   };
+  featured?: boolean;
 }
 
-const { title, description, topic, image, imageAlt, url } = Astro.props;
+const {
+  title,
+  description,
+  topic,
+  image,
+  imageAlt,
+  url,
+  featured = false,
+} = Astro.props;
 ---
 
-<article class="group flex flex-col overflow-hidden rounded-2xl border border-gray-muted bg-black-dark transition-all duration-300 hover:border-gray-slate hover:shadow-lg hover:shadow-indigo-vibrant/5">
-  <div class="relative aspect-video overflow-hidden">
+<article
+  class:list={[
+    "group flex flex-col overflow-hidden rounded-2xl border border-gray-muted bg-black-dark transition-all duration-300 hover:border-gray-slate hover:shadow-lg hover:shadow-indigo-vibrant/5",
+    featured && "sm:col-span-2 lg:col-span-3 lg:flex-row",
+  ]}
+>
+  <div
+    class:list={[
+      "relative aspect-video overflow-hidden",
+      featured && "lg:w-1/2 lg:shrink-0",
+    ]}
+  >
     <Picture
       src={image}
       alt={imageAlt}
-      widths={[400, 800]}
-      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+      widths={featured ? [640, 1280] : [400, 800]}
+      sizes={
+        featured
+          ? "(min-width: 1024px) 50vw, 100vw"
+          : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+      }
       formats={["avif", "webp"]}
       loading="lazy"
       decoding="async"
@@ -33,16 +56,33 @@ const { title, description, topic, image, imageAlt, url } = Astro.props;
     />
   </div>
 
-  <div class="flex flex-1 flex-col p-6">
+  <div
+    class:list={[
+      "flex flex-1 flex-col p-5 sm:p-6",
+      featured && "lg:justify-center lg:p-8",
+    ]}
+  >
     <div class="mb-4 flex flex-wrap gap-2">
       {topic.map((topic) => (
         <Topic topic={topic} />
       ))}
     </div>
 
-    <h3 class="mb-2 text-xl font-bold text-gray-light">{title}</h3>
+    <h3
+      class:list={[
+        "mb-2 font-bold text-gray-light",
+        featured ? "text-2xl lg:text-3xl" : "text-xl",
+      ]}
+    >
+      {title}
+    </h3>
 
-    <p class="mb-6 line-clamp-3 text-sm leading-relaxed text-balance text-gray-blue">
+    <p
+      class:list={[
+        "mb-6 font-sans text-sm leading-relaxed text-pretty text-gray-blue",
+        featured ? "line-clamp-4 lg:text-base" : "line-clamp-3",
+      ]}
+    >
       {description}
     </p>
 
@@ -61,7 +101,7 @@ const { title, description, topic, image, imageAlt, url } = Astro.props;
         ariaLabel={`Repositorio de ${title}`}
         icon="simple-icons:github"
         targ
-        className="flex items-center justify-center rounded-xl bg-black-deep p-4 text-gray-light transition-colors duration-200 hover:bg-gray-muted"
+        className="flex items-center justify-center rounded-xl bg-black-deep p-3 text-gray-light transition-colors duration-200 hover:bg-gray-muted sm:p-4"
       />
     </div>
   </div>

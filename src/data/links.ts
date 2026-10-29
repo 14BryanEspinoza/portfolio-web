@@ -10,7 +10,7 @@ export const linkNavbar: LinksProps[] = [
   { url: import.meta.env.BASE_URL, label: "Inicio", icon: "lucide:home" },
   {
     url: import.meta.env.BASE_URL + "#about",
-    label: "Sobre Mí",
+    label: "Sobre mí",
     icon: "lucide:user",
   },
   {
