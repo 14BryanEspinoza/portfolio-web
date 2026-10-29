@@ -1,7 +1,7 @@
 ---
-order: 2
+order: 3
 title: "Podia"
-description: "Recreación del challenge Podia en Astro y Tailwind v4: view transitions, cero fuentes externas y 16 KB de JS en cliente."
+description: "Recreación del challenge Podia con foco en performance: AVIF/WebP y cero fuentes externas."
 image: "../../assets/podia.png"
 imageAlt: "Preview de Podia"
 topic: ["Astro", "TailwindCSS", "TypeScript"]
